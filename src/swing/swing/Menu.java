@@ -11,6 +11,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 import javax.swing.JFrame;
+import swing.event.EventMenuSelected;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -21,6 +22,8 @@ import javax.swing.JFrame;
  * @author sethk
  */
 public class Menu extends javax.swing.JPanel {
+
+    private EventMenuSelected event;
 
     /**
      * Creates new form Menu
@@ -33,22 +36,28 @@ public class Menu extends javax.swing.JPanel {
 
     }
 
+    public void addEventMenuSelected(EventMenuSelected event) {
+        this.event = event;
+        listMenu1.addEventMenuSelected(event);
+    }
+
     private void init() {
-        listMenu1.addItem(new Model_Menu("1", "Doanh Thu", Model_Menu.MenuType.MENU));
-        listMenu1.addItem(new Model_Menu("2", "Hóa Đơn", Model_Menu.MenuType.MENU));
-        listMenu1.addItem(new Model_Menu("3", "Danh Mục", Model_Menu.MenuType.MENU));
-        listMenu1.addItem(new Model_Menu("4", "Sản Phẩm", Model_Menu.MenuType.MENU));
-        listMenu1.addItem(new Model_Menu("5", "Khuyến Mãi", Model_Menu.MenuType.MENU));
+        listMenu1.addItem(new Model_Menu("calender", "Đặt Sân", Model_Menu.MenuType.MENU));
+        listMenu1.addItem(new Model_Menu("done", "Nhận Sân", Model_Menu.MenuType.MENU));
+        listMenu1.addItem(new Model_Menu("bill", "Thanh Toán", Model_Menu.MenuType.MENU));
+        listMenu1.addItem(new Model_Menu("chart", "Thống Kê & Tổng Hợp", Model_Menu.MenuType.MENU));
+        listMenu1.addItem(new Model_Menu("sale", "CT Khuyến Mãi", Model_Menu.MenuType.MENU));
         listMenu1.addItem(new Model_Menu("", " ", Model_Menu.MenuType.EMPTY));
 
-        listMenu1.addItem(new Model_Menu("", "My Data", Model_Menu.MenuType.TITLE));
+        listMenu1.addItem(new Model_Menu("", "Manager", Model_Menu.MenuType.TITLE));
         listMenu1.addItem(new Model_Menu("", " ", Model_Menu.MenuType.EMPTY));
-        listMenu1.addItem(new Model_Menu("6", "Tài Khoản", Model_Menu.MenuType.MENU));
-        listMenu1.addItem(new Model_Menu("7", "Nhân Viên", Model_Menu.MenuType.MENU));
-        listMenu1.addItem(new Model_Menu("8", "Extra", Model_Menu.MenuType.MENU));
-        listMenu1.addItem(new Model_Menu("9", "More", Model_Menu.MenuType.MENU));
-        listMenu1.addItem(new Model_Menu("10", "Logout", Model_Menu.MenuType.MENU));
+        listMenu1.addItem(new Model_Menu("pitch", "Quản Lý Sân ", Model_Menu.MenuType.MENU));
+        listMenu1.addItem(new Model_Menu("employee", "QL Nhân Viên", Model_Menu.MenuType.MENU));
+        listMenu1.addItem(new Model_Menu("client", "QL Khách Hàng", Model_Menu.MenuType.MENU));
+        listMenu1.addItem(new Model_Menu("mBill", "Quản Lý Hóa Đơn ", Model_Menu.MenuType.MENU));
+        listMenu1.addItem(new Model_Menu("service", "Quản Lý Dịch Vụ", Model_Menu.MenuType.MENU));
         listMenu1.addItem(new Model_Menu("", "", Model_Menu.MenuType.EMPTY));
+        listMenu1.addItem(new Model_Menu("logout", "Log out", Model_Menu.MenuType.MENU));
     }
 
     /**
@@ -68,8 +77,8 @@ public class Menu extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/logo.png"))); // NOI18N
-        jLabel1.setText("Application");
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/ball.png"))); // NOI18N
+        jLabel1.setText("  QLSB");
 
         javax.swing.GroupLayout panelMovingLayout = new javax.swing.GroupLayout(panelMoving);
         panelMoving.setLayout(panelMovingLayout);
@@ -85,7 +94,7 @@ public class Menu extends javax.swing.JPanel {
             .addGroup(panelMovingLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -100,7 +109,7 @@ public class Menu extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(panelMoving, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(listMenu1, javax.swing.GroupLayout.DEFAULT_SIZE, 457, Short.MAX_VALUE))
+                .addComponent(listMenu1, javax.swing.GroupLayout.DEFAULT_SIZE, 474, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
