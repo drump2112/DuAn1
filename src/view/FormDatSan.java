@@ -4,17 +4,40 @@
  */
 package view;
 
+import swing.table.tbCustom.ScrollBar;
+import java.awt.Color;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.table.DefaultTableModel;
+import swing.model.StatusType;
+
 /**
  *
  * @author sethk
  */
 public class FormDatSan extends javax.swing.JPanel {
-
+    DefaultTableModel model;
     /**
      * Creates new form FormDatSan
      */
     public FormDatSan() {
         initComponents();
+        spTable.setVerticalScrollBar(new ScrollBar());
+        spTable.getVerticalScrollBar().setBackground(Color.WHITE);
+        spTable.getViewport().setBackground(Color.WHITE);
+        JPanel p = new JPanel();
+        p.setBackground(Color.WHITE);
+        spTable.setCorner(JScrollPane.UPPER_RIGHT_CORNER, p);
+        model = (DefaultTableModel) tbDatSan.getModel();
+        model.setRowCount(0);
+        model.addRow(new Object[]{"NouCamp", "Sân 11", StatusType.REJECT});
+        model.addRow(new Object[]{"NouCamp", "Sân 11", StatusType.REJECT});
+        model.addRow(new Object[]{"NouCamp", "Sân 11", StatusType.REJECT});
+        model.addRow(new Object[]{"NouCamp", "Sân 11", StatusType.REJECT});
+        model.addRow(new Object[]{"NouCamp", "Sân 11", StatusType.REJECT});
+        model.addRow(new Object[]{"NouCamp", "Sân 11", StatusType.REJECT});
+        model.addRow(new Object[]{"NouCamp", "Sân 11", StatusType.REJECT});
+        model.addRow(new Object[]{"NouCamp", "Sân 11", StatusType.REJECT});
     }
 
     /**
@@ -26,12 +49,12 @@ public class FormDatSan extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        table1 = new swing.swing.Table();
+        spTable = new javax.swing.JScrollPane();
+        tbDatSan = new com.raven.swing.Table();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
-        table1.setModel(new javax.swing.table.DefaultTableModel(
+        tbDatSan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -42,29 +65,29 @@ public class FormDatSan extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(table1);
+        spTable.setViewportView(tbDatSan);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 798, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addGap(177, 177, 177)
+                .addComponent(spTable, javax.swing.GroupLayout.PREFERRED_SIZE, 776, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(585, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(171, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(150, 150, 150)
+                .addComponent(spTable, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(244, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JScrollPane jScrollPane1;
-    private swing.swing.Table table1;
+    private javax.swing.JScrollPane spTable;
+    private com.raven.swing.Table tbDatSan;
     // End of variables declaration//GEN-END:variables
 }

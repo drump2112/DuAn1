@@ -17,6 +17,7 @@ import swing.model.StatusType;
  * @author sethk
  */
 public class TableStatus extends JLabel {
+
     public StatusType getType() {
         return type;
     }

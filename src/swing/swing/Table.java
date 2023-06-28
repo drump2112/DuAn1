@@ -16,7 +16,8 @@ import swing.model.StatusType;
  *
  * @author sethk
  */
-public class Table  extends JTable{
+public class Table extends JTable {
+
     public Table() {
         setShowHorizontalLines(true);
         setGridColor(new Color(230, 230, 230));
@@ -46,10 +47,9 @@ public class Table  extends JTable{
                     }
                     return com;
                 } else {
-                   StatusType type = (StatusType) o;
+                    StatusType type = (StatusType) o;
                     CellStatus cell = new CellStatus(type);
                     return cell;
-
                 }
             }
         });
