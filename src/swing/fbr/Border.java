@@ -10,7 +10,7 @@ package swing.fbr;
  */
 public class Border {
 
-    public Point getTop() {
+      public Point getTop() {
         return top;
     }
 

@@ -4,6 +4,7 @@
  */
 package swing.controls;
 
+import swing.swing.RippleEffect;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Graphics;

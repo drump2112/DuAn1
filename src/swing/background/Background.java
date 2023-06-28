@@ -30,21 +30,7 @@ import swing.shadow.ShadowRenderer;
  */
 public class Background extends JComponent {
 
-    private boolean showPaint;
-
-    public boolean isShowPaint() {
-        return showPaint;
-    }
-
-    public void setShowPaint(boolean showPaint) {
-        this.showPaint = showPaint;
-    }
-    private float animate;
-    private Icon image;
-    private BufferedImage bufferedImage;
-    private Component blur;
-
-    public Component getBlur() {
+     public Component getBlur() {
         return blur;
     }
 
@@ -59,6 +45,10 @@ public class Background extends JComponent {
         });
     }
 
+    private Icon image;
+    private BufferedImage bufferedImage;
+    private Component blur;
+
     public Background() {
         image = new ImageIcon(getClass().getResource("/swing/background/bg2.jpg"));
     }
@@ -67,7 +57,6 @@ public class Background extends JComponent {
         if (image != null) {
             int width = getWidth();
             int height = getHeight();
-
             if (width > 0 && height > 0) {
                 bufferedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
                 Graphics2D g2 = bufferedImage.createGraphics();
@@ -89,19 +78,19 @@ public class Background extends JComponent {
         int height = blur.getHeight();
         int shadow = 8;
         if (width > 0 && height > 0) {
-            
             BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
             Graphics2D g2 = img.createGraphics();
             g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-            Shape shape = new FancyBorderRadius(width, height, "91% 9% 92% 8% / 12% 83% 17% 88% ").getShape();
+            Shape shape = new FancyBorderRadius(width, height, "32% 68% 65% 35% / 60% 78% 22% 40%").getShape();
             g2.fill(shape);
             g2.setComposite(AlphaComposite.SrcIn);
-            g2.drawImage(ImageUtil.blur(bufferedImage.getSubimage(x, y, width, height), 10f), 0, 0, null);
-            g2.setColor(new Color(255, 255, 255, 10));
+            g2.drawImage(ImageUtil.blur(bufferedImage.getSubimage(x, y, width, height), 5f), 0, 0, null);
+            g2.setComposite(AlphaComposite.SrcOver);
+            g2.setColor(new Color(255, 255, 255, 20));
+            g2.fill(shape);
             g2.dispose();
             g.drawImage(new ShadowRenderer(shadow, 0.3f, new Color(0, 0, 0)).createShadow(img), (int) (x - shadow * 0.8f), (int) (y - shadow * 0.8f), null);
             g.drawImage(img, x, y, null);
-            
         }
     }
 
@@ -121,8 +110,8 @@ public class Background extends JComponent {
     }
 
     @Override
-    public void setBounds(int x, int y, int width, int height) {
-        super.setBounds(x, y, width, height);
+    public void setBounds(int i, int i1, int i2, int i3) {
+        super.setBounds(i, i1, i2, i3);
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
@@ -130,10 +119,7 @@ public class Background extends JComponent {
                 repaint();
             }
         });
-
     }
-
-    
 
     private Rectangle getAutoSize(Icon image) {
         int w = getWidth();
@@ -155,18 +141,4 @@ public class Background extends JComponent {
         int y = (h - height) / 2;
         return new Rectangle(new Point(x, y), new Dimension(width, height));
     }
-
-    public void setAlpha(float fraction) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    public float getAnimate() {
-        return animate;
-    }
-
-    public void setAnimate(float animate) {
-        this.animate = animate;
-        repaint();
-    }
-
 }

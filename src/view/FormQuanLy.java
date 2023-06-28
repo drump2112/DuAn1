@@ -14,18 +14,21 @@ import swing.event.EventMenuSelected;
  */
 public class FormQuanLy extends javax.swing.JFrame {
 
+    FormDatSan formDs;
+
     /**
      * Creates new form FormQuanLy
      */
     public FormQuanLy() {
         initComponents();
+        formDs = new FormDatSan();
         setBackground(new Color(0, 0, 0, 0));
         menu.initMoving(FormQuanLy.this);
         menu.addEventMenuSelected(new EventMenuSelected() {
             @Override
             public void selected(int index) {
                 if (index == 0) {
-                    return;
+                    setForm(formDs);
                 } else if (index == 1) {
                     return;
                 } else if (index == 2) {
@@ -35,6 +38,7 @@ public class FormQuanLy extends javax.swing.JFrame {
                 }
             }
         });
+        setForm(formDs);
     }
 
     private void setForm(JComponent com) {
@@ -61,17 +65,15 @@ public class FormQuanLy extends javax.swing.JFrame {
         setBackground(new java.awt.Color(255, 255, 255));
         setUndecorated(true);
 
-        panelBorder1.setBackground(new java.awt.Color(242, 242, 242));
-
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1043, Short.MAX_VALUE)
+            .addGap(0, 1009, Short.MAX_VALUE)
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 579, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout panelBorder1Layout = new javax.swing.GroupLayout(panelBorder1);
@@ -79,14 +81,14 @@ public class FormQuanLy extends javax.swing.JFrame {
         panelBorder1Layout.setHorizontalGroup(
             panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelBorder1Layout.createSequentialGroup()
-                .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         panelBorder1Layout.setVerticalGroup(
             panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(menu, javax.swing.GroupLayout.DEFAULT_SIZE, 591, Short.MAX_VALUE)
+            .addComponent(menu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(panelBorder1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -101,7 +103,7 @@ public class FormQuanLy extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelBorder1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelBorder1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
