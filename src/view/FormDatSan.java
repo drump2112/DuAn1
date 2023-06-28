@@ -11,10 +11,12 @@ import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
 import swing.model.StatusType;
 
+
 /**
  *
  * @author sethk
  */
+
 public class FormDatSan extends javax.swing.JPanel {
     DefaultTableModel model;
     /**
@@ -29,7 +31,9 @@ public class FormDatSan extends javax.swing.JPanel {
         p.setBackground(Color.WHITE);
         spTable.setCorner(JScrollPane.UPPER_RIGHT_CORNER, p);
         model = (DefaultTableModel) tbDatSan.getModel();
+        
         model.setRowCount(0);
+        
         model.addRow(new Object[]{"NouCamp", "Sân 11", StatusType.REJECT});
         model.addRow(new Object[]{"NouCamp", "Sân 11", StatusType.REJECT});
         model.addRow(new Object[]{"NouCamp", "Sân 11", StatusType.REJECT});
@@ -50,44 +54,49 @@ public class FormDatSan extends javax.swing.JPanel {
     private void initComponents() {
 
         spTable = new javax.swing.JScrollPane();
-        tbDatSan = new com.raven.swing.Table();
+        tbDatSan = new swing.swing.Table();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
         tbDatSan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Tên Sân", "Loại", "Status"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         spTable.setViewportView(tbDatSan);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(177, 177, 177)
-                .addComponent(spTable, javax.swing.GroupLayout.PREFERRED_SIZE, 776, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(585, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(46, Short.MAX_VALUE)
+                .addComponent(spTable, javax.swing.GroupLayout.PREFERRED_SIZE, 874, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(150, 150, 150)
-                .addComponent(spTable, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(244, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(248, Short.MAX_VALUE)
+                .addComponent(spTable, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane spTable;
-    private com.raven.swing.Table tbDatSan;
+    private swing.swing.Table tbDatSan;
     // End of variables declaration//GEN-END:variables
 }
