@@ -31,33 +31,111 @@ public class FormDangNhap extends javax.swing.JFrame {
 
         background1 = new swing.background.Background();
         panel = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        txtPass = new swing.controls.PassField();
+        textField11 = new swing.controls.TextField1();
+        buttonDN1 = new swing.controls.ButtonDN();
+        btExit = new swing.controls.ButtonDN();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         background1.setBlur(panel);
 
         panel.setOpaque(false);
 
+        jLabel1.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Log In");
+
+        txtPass.setForeground(new java.awt.Color(255, 255, 255));
+        txtPass.setCaretColor(new java.awt.Color(255, 255, 255));
+        txtPass.setDisabledTextColor(new java.awt.Color(255, 255, 255));
+        txtPass.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        txtPass.setLabelText("Password");
+        txtPass.setLineColor(new java.awt.Color(255, 255, 255));
+
+        textField11.setForeground(new java.awt.Color(255, 255, 255));
+        textField11.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        textField11.setLabelText("Username");
+        textField11.setLineColor(new java.awt.Color(255, 255, 255));
+        textField11.setSelectedTextColor(new java.awt.Color(255, 255, 255));
+
+        buttonDN1.setForeground(new java.awt.Color(255, 255, 255));
+        buttonDN1.setText("Đăng Nhập");
+        buttonDN1.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        buttonDN1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonDN1ActionPerformed(evt);
+            }
+        });
+
+        btExit.setForeground(new java.awt.Color(255, 255, 255));
+        btExit.setText("Thoát");
+        btExit.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        btExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btExitActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
         panel.setLayout(panelLayout);
         panelLayout.setHorizontalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        panelLayout.setVerticalGroup(
-            panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(panelLayout.createSequentialGroup()
+                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelLayout.createSequentialGroup()
+                        .addGap(105, 105, 105)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelLayout.createSequentialGroup()
+                        .addGap(84, 84, 84)
+                        .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtPass, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
+                            .addComponent(textField11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(panelLayout.createSequentialGroup()
+                        .addGap(104, 104, 104)
+                        .addComponent(buttonDN1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btExit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(84, Short.MAX_VALUE))
         );
 
+        panelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btExit, buttonDN1});
+
+        panelLayout.setVerticalGroup(
+            panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelLayout.createSequentialGroup()
+                .addGap(49, 49, 49)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
+                .addComponent(textField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonDN1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btExit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(85, Short.MAX_VALUE))
+        );
+
+        panelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btExit, buttonDN1});
+
         background1.add(panel);
-        panel.setBounds(340, 110, 380, 390);
+        panel.setBounds(360, 90, 380, 390);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 1063, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(background1, javax.swing.GroupLayout.PREFERRED_SIZE, 1063, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -67,6 +145,22 @@ public class FormDangNhap extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_formWindowClosing
+
+    private void buttonDN1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDN1ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        new FormQuanLy().setVisible(true);
+    }//GEN-LAST:event_buttonDN1ActionPerformed
+
+    private void btExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExitActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_btExitActionPerformed
 
     /**
      * @param args the command line arguments
@@ -105,6 +199,11 @@ public class FormDangNhap extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private swing.background.Background background1;
+    private swing.controls.ButtonDN btExit;
+    private swing.controls.ButtonDN buttonDN1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel panel;
+    private swing.controls.TextField1 textField11;
+    private swing.controls.PassField txtPass;
     // End of variables declaration//GEN-END:variables
 }

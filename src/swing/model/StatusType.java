@@ -9,5 +9,5 @@ package swing.model;
  * @author sethk
  */
 public enum StatusType {
-    PENDING, APPROVED, REJECT
+    EMPTY, USING ,RESERVED
 }

@@ -16,6 +16,12 @@ public class FormQuanLy extends javax.swing.JFrame {
 
     FormDatSan formDs;
     FormThongKe formTK;
+    FormQLNV formQLNV;
+    FormNhanSan formNS;
+    FormThanhToan formTT;
+    FormQLKH formQLKH;
+    FormQLS formQLS;
+    FormDangNhap formDn;
 
     /**
      * Creates new form FormQuanLy
@@ -25,6 +31,12 @@ public class FormQuanLy extends javax.swing.JFrame {
         setBackground(new Color(0, 0, 0, 0));
         formDs = new FormDatSan();
         formTK = new FormThongKe();
+        formQLNV = new FormQLNV();
+        formNS = new FormNhanSan();
+        formTT = new FormThanhToan();
+        formQLS = new FormQLS();
+        formQLKH = new FormQLKH();
+
         menu.initMoving(FormQuanLy.this);
         menu.addEventMenuSelected(new EventMenuSelected() {
             @Override
@@ -32,16 +44,25 @@ public class FormQuanLy extends javax.swing.JFrame {
                 if (index == 0) {
                     setForm(formDs);
                 } else if (index == 1) {
-                    setForm(formTK);
+                    setForm(formNS);
                 } else if (index == 2) {
-                    setForm(formDs);
+                    setForm(formTT);
                 } else if (index == 3) {
-                    setForm(formDs);
+                    setForm(formTK);
+                } else if (index == 4) {
+                    setForm(formTK);
+                } else if (index == 8) {
+                    setForm(formQLS);
+                } else if (index == 9) {
+                    setForm(formQLNV);
+                } else if (index == 10) {
+                    setForm(formQLKH);
+                } else if (index == 16) {
+                    logOut();             
                 }
             }
         });
         setForm(formDs);
-        
     }
 
     private void setForm(JComponent com) {
@@ -49,6 +70,11 @@ public class FormQuanLy extends javax.swing.JFrame {
         mainPanel.add(com);
         mainPanel.repaint();
         mainPanel.revalidate();
+    }
+
+    public void logOut() {
+        this.dispose();
+        new FormDangNhap().setVisible(true);
     }
 
     /**
@@ -63,6 +89,9 @@ public class FormQuanLy extends javax.swing.JFrame {
         panelBorder1 = new swing.swing.PanelBorder();
         menu = new swing.swing.Menu();
         mainPanel = new javax.swing.JPanel();
+        panelSeth1 = new swing.component.PanelSeth();
+        jLabel1 = new javax.swing.JLabel();
+        button1 = new swing.controls.Button();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -71,21 +100,60 @@ public class FormQuanLy extends javax.swing.JFrame {
         mainPanel.setOpaque(false);
         mainPanel.setLayout(new java.awt.BorderLayout());
 
+        panelSeth1.setColor1(new java.awt.Color(48, 43, 99));
+        panelSeth1.setColor2(new java.awt.Color(15, 12, 41));
+
+        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Trương Tiến Dũng");
+
+        button1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/eye.png"))); // NOI18N
+        button1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelSeth1Layout = new javax.swing.GroupLayout(panelSeth1);
+        panelSeth1.setLayout(panelSeth1Layout);
+        panelSeth1Layout.setHorizontalGroup(
+            panelSeth1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelSeth1Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(12, Short.MAX_VALUE))
+        );
+        panelSeth1Layout.setVerticalGroup(
+            panelSeth1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelSeth1Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(panelSeth1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addContainerGap(10, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout panelBorder1Layout = new javax.swing.GroupLayout(panelBorder1);
         panelBorder1.setLayout(panelBorder1Layout);
         panelBorder1Layout.setHorizontalGroup(
             panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelBorder1Layout.createSequentialGroup()
                 .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1009, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(18, 18, 18)
+                .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 1065, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(panelSeth1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelBorder1Layout.setVerticalGroup(
             panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(menu, javax.swing.GroupLayout.DEFAULT_SIZE, 591, Short.MAX_VALUE)
+            .addComponent(menu, javax.swing.GroupLayout.DEFAULT_SIZE, 648, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBorder1Layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(panelSeth1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -94,16 +162,24 @@ public class FormQuanLy extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelBorder1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(panelBorder1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelBorder1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(panelBorder1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_button1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -141,8 +217,11 @@ public class FormQuanLy extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private swing.controls.Button button1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel mainPanel;
     private swing.swing.Menu menu;
     private swing.swing.PanelBorder panelBorder1;
+    private swing.component.PanelSeth panelSeth1;
     // End of variables declaration//GEN-END:variables
 }

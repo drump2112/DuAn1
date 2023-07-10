@@ -47,8 +47,9 @@ public class Menu extends javax.swing.JPanel {
         listMenu1.addItem(new Model_Menu("bill", "Thanh Toán", Model_Menu.MenuType.MENU));
         listMenu1.addItem(new Model_Menu("chart", "Thống Kê & Tổng Hợp", Model_Menu.MenuType.MENU));
         listMenu1.addItem(new Model_Menu("sale", "CT Khuyến Mãi", Model_Menu.MenuType.MENU));
+        listMenu1.addItem(new Model_Menu("giaoca", "Giao Ca", Model_Menu.MenuType.MENU));
+        
         listMenu1.addItem(new Model_Menu("", " ", Model_Menu.MenuType.EMPTY));
-
         listMenu1.addItem(new Model_Menu("", "Manager", Model_Menu.MenuType.TITLE));
         listMenu1.addItem(new Model_Menu("", " ", Model_Menu.MenuType.EMPTY));
         listMenu1.addItem(new Model_Menu("pitch", "Quản Lý Sân ", Model_Menu.MenuType.MENU));
@@ -56,6 +57,7 @@ public class Menu extends javax.swing.JPanel {
         listMenu1.addItem(new Model_Menu("client", "QL Khách Hàng", Model_Menu.MenuType.MENU));
         listMenu1.addItem(new Model_Menu("mBill", "Quản Lý Hóa Đơn ", Model_Menu.MenuType.MENU));
         listMenu1.addItem(new Model_Menu("service", "Quản Lý Dịch Vụ", Model_Menu.MenuType.MENU));
+        listMenu1.addItem(new Model_Menu("service", "Quản Lý Tài Khoản", Model_Menu.MenuType.MENU));
         listMenu1.addItem(new Model_Menu("", "", Model_Menu.MenuType.EMPTY));
         listMenu1.addItem(new Model_Menu("logout", "Log out", Model_Menu.MenuType.MENU));
     }
@@ -117,7 +119,7 @@ public class Menu extends javax.swing.JPanel {
     protected void paintChildren(Graphics grphcs) {
         Graphics2D g2 = (Graphics2D) grphcs;
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        GradientPaint g = new GradientPaint(0, 0, Color.decode("#1CB5E0"), 0, getHeight(), Color.decode("#000046"));
+        GradientPaint g = new GradientPaint(0, 0, Color.decode("#4286f4"), 0, getHeight(), Color.decode("#373B44"));
         g2.setPaint(g);
         g2.fillRoundRect(0, 0, getWidth(), getHeight(), 15, 15);
         g2.fillRect(getWidth() - 20, 0, getWidth(), getHeight());
