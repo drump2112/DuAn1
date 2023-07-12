@@ -103,11 +103,11 @@ public class FormDatSan extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Mã ĐS", "Tên Sân", "Loại", "Khách Hàng", "SĐT", "Giờ BĐ", "Giờ KT", "Ngày", "Trạng Thái"
+                "Mã ĐS", "Tên Sân", "Loại", "Khách Hàng", "SĐT", "Giờ BĐ", "Giờ KT", "Ngày", "Tiền Cọc", "Trạng Thái"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, true, false, false, false, false
+                false, false, false, false, true, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {

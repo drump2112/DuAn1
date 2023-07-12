@@ -17,6 +17,7 @@ public class LichDatSanCT {
     private String tenSan;
     private Integer loai;
     private String tenKh;
+    private Double tienCoc;
     private String sdt;
     private Time gioBD;
     private Time gioKT;
@@ -26,17 +27,27 @@ public class LichDatSanCT {
     public LichDatSanCT() {
     }
 
-    public LichDatSanCT(String maDS, String tenSan, Integer loai, String tenKh, String sdt, Time gioBD, Time gioKT, Date ngay, Integer trangThai) {
+    public LichDatSanCT(String maDS, String tenSan, Integer loai, String tenKh, Double tienCoc, String sdt, Time gioBD, Time gioKT, Date ngay, Integer trangThai) {
         this.maDS = maDS;
         this.tenSan = tenSan;
         this.loai = loai;
         this.tenKh = tenKh;
+        this.tienCoc = tienCoc;
         this.sdt = sdt;
         this.gioBD = gioBD;
         this.gioKT = gioKT;
         this.ngay = ngay;
         this.trangThai = trangThai;
     }
+
+    public Double getTienCoc() {
+        return tienCoc;
+    }
+
+    public void setTienCoc(Double tienCoc) {
+        this.tienCoc = tienCoc;
+    }
+
 
     public String getMaDS() {
         return maDS;
