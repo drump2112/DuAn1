@@ -14,7 +14,7 @@ import java.sql.PreparedStatement;
  * @author sethk
  */
 public class RPKhachHang {
- private DbConnection db;
+
     public boolean addKhachHang(KhachHang kh) {
         String sql = "INSERT INTO dbo.KhachHang(Ma,Ten,SDT)VALUES(?,?,?)";
 
@@ -30,7 +30,4 @@ public class RPKhachHang {
         }
         return false;
     }
-    public ArrayList<>
-    
-    
 }
