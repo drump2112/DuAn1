@@ -27,9 +27,13 @@ public class RPSanBong {
                 sb.setTenSan(rs.getString("ten"));
                 sb.setGia(rs.getDouble("gia"));
                 sb.setGia2(rs.getDouble("gia2"));
-//                sb.setLoaiSan(rs);
+                sb.setLoaiSan(rs.getInt("loaisan"));
+                sb.setTrangThai(rs.getInt("trangthai"));
+                lstSB.add(sb);
             }
         } catch (Exception e) {
+            e.printStackTrace();
+            return null;
         }
         return lstSB;
     }
