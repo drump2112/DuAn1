@@ -20,6 +20,7 @@ public class FormQLNV extends javax.swing.JPanel {
      */
     public FormQLNV() {
         initComponents();
+        rb1.setBackground(new Color(0, 0, 0, 0));
         spTable.setVerticalScrollBar(new ScrollBar());
         spTable.getVerticalScrollBar().setBackground(Color.WHITE);
         spTable.getViewport().setBackground(Color.WHITE);
@@ -41,6 +42,7 @@ public class FormQLNV extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         panelBorder1 = new swing.swing.PanelBorder();
         panelSeth4 = new swing.component.PanelSeth();
         jLabel2 = new javax.swing.JLabel();
@@ -66,6 +68,8 @@ public class FormQLNV extends javax.swing.JPanel {
         button3 = new swing.controls.Button();
         button4 = new swing.controls.Button();
         button5 = new swing.controls.Button();
+        rb1 = new swing.RadioButtonCustom();
+        rb2 = new swing.RadioButtonCustom();
 
         setPreferredSize(new java.awt.Dimension(1079, 586));
 
@@ -84,7 +88,7 @@ public class FormQLNV extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Mã NV", "Họ Tên", "IDCV", "Email", "CCCD", "SĐT", "Địa Chỉ", "Ngày Sinh"
+                "Mã NV", "Họ Tên", "Giới Tính", "IDCV", "Email", "CCCD", "SĐT", "Địa Chỉ", "Ngày Sinh"
             }
         ));
         spTable.setViewportView(table1);
@@ -186,6 +190,26 @@ public class FormQLNV extends javax.swing.JPanel {
                 .addContainerGap(63, Short.MAX_VALUE))
         );
 
+        buttonGroup1.add(rb1);
+        rb1.setForeground(new java.awt.Color(255, 255, 255));
+        rb1.setText("Nam");
+        rb1.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        rb1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rb1ActionPerformed(evt);
+            }
+        });
+
+        buttonGroup1.add(rb2);
+        rb2.setForeground(new java.awt.Color(255, 255, 255));
+        rb2.setText("Nữ");
+        rb2.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        rb2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rb2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelSeth4Layout = new javax.swing.GroupLayout(panelSeth4);
         panelSeth4.setLayout(panelSeth4Layout);
         panelSeth4Layout.setHorizontalGroup(
@@ -195,7 +219,7 @@ public class FormQLNV extends javax.swing.JPanel {
                 .addGroup(panelSeth4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelSeth4Layout.createSequentialGroup()
                         .addComponent(spTable, javax.swing.GroupLayout.PREFERRED_SIZE, 995, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(42, Short.MAX_VALUE))
+                        .addContainerGap(52, Short.MAX_VALUE))
                     .addGroup(panelSeth4Layout.createSequentialGroup()
                         .addGroup(panelSeth4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -225,8 +249,15 @@ public class FormQLNV extends javax.swing.JPanel {
                         .addComponent(panelButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(70, 70, 70))))
             .addGroup(panelSeth4Layout.createSequentialGroup()
-                .addGap(313, 313, 313)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panelSeth4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelSeth4Layout.createSequentialGroup()
+                        .addGap(313, 313, 313)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelSeth4Layout.createSequentialGroup()
+                        .addGap(356, 356, 356)
+                        .addComponent(rb1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(rb2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         panelSeth4Layout.setVerticalGroup(
@@ -273,13 +304,17 @@ public class FormQLNV extends javax.swing.JPanel {
                                         .addComponent(textField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(21, 21, 21)
                                         .addComponent(textField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelSeth4Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                        .addGroup(panelSeth4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(rb1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(rb2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18))
+                    .addGroup(panelSeth4Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(panelButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33)))
+                        .addGap(46, 46, 46)))
                 .addComponent(spTable, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39))
+                .addGap(26, 26, 26))
         );
 
         javax.swing.GroupLayout panelBorder1Layout = new javax.swing.GroupLayout(panelBorder1);
@@ -317,11 +352,20 @@ public class FormQLNV extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_button5ActionPerformed
 
+    private void rb1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rb1ActionPerformed
+
+    private void rb2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rb2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private swing.controls.Button button3;
     private swing.controls.Button button4;
     private swing.controls.Button button5;
+    private javax.swing.ButtonGroup buttonGroup1;
     private swing.controls.Combobox cboCV;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -335,6 +379,8 @@ public class FormQLNV extends javax.swing.JPanel {
     private swing.swing.PanelBorder panelBorder1;
     private swing.swing.PanelBorder panelButton;
     private swing.component.PanelSeth panelSeth4;
+    private swing.RadioButtonCustom rb1;
+    private swing.RadioButtonCustom rb2;
     private javax.swing.JScrollPane spTable;
     private swing.swing.Table table1;
     private swing.controls.TextField textField1;
