@@ -17,14 +17,33 @@ public class ServiceSanBong {
     RPSanBong repo = new RPSanBong();
 
     public ArrayList<SanBong> getList() {
-        return repo.getListSB();
+       ArrayList<SanBong> lstSB = new ArrayList<>();
+       lstSB = repo.getListSB();
+       return lstSB;
 
     }
     
     public String addSB(SanBong sb){
         if (repo.addSB(sb)) {
-            return "Them san bong thanh cong";
+            return "Thêm sân bóng thành công";
         }
-        return "Them san bong that bai";
+        return "Thêm sân bóng thất bại";
     }
+    
+     public String updateSB(SanBong sb,String id){
+        if (repo.updateSB(sb, id)) {
+            return "Sửa sân bóng thành công";
+        }
+        else{
+            return "Sửa sân bóng thất bại";
+        }
+
+    }
+     
+     public String deleteSB(String id){
+         if (repo.deleteSB(id)) {
+             return "Xóa sân bóng thành công";
+         }
+         return "Xóa sân bóng thất bại";
+     }
 }

@@ -15,7 +15,7 @@ import swing.event.EventMenuSelected;
 public class FormQuanLy extends javax.swing.JFrame {
 
     FormDatSan formDs;
-    FormThongKe formTK;
+    FormThongKe formTK; 
     FormQLNV formQLNV;
     FormNhanSan formNS;
     FormThanhToan formTT;

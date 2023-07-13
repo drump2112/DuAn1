@@ -19,10 +19,11 @@ import swing.swing.ScrollBar;
  * @author sethk
  */
 public class FormQLS extends javax.swing.JPanel {
+
     DefaultTableModel model = new DefaultTableModel();
     ServiceSanBong service = new ServiceSanBong();
     int index;
-    
+
     public FormQLS() {
         initComponents();
         panelButton.setBackground(new Color(0, 0, 0, 0));
@@ -32,7 +33,7 @@ public class FormQLS extends javax.swing.JPanel {
         JPanel p = new JPanel();
         p.setBackground(Color.WHITE);
         spTable.setCorner(JScrollPane.UPPER_RIGHT_CORNER, p);
-        
+
         loadToTable(service.getList());
     }
 
@@ -80,6 +81,11 @@ public class FormQLS extends javax.swing.JPanel {
                 "Tên Sân", "Loại", "Giá 1 ", "Giá 2"
             }
         ));
+        tblBang.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblBangMouseClicked(evt);
+            }
+        });
         spTable.setViewportView(tblBang);
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
@@ -243,13 +249,44 @@ public class FormQLS extends javax.swing.JPanel {
         loadToTable(service.getList());
     }//GEN-LAST:event_button3ActionPerformed
 
+    public boolean check(){
+        if (txtTenSan.getText().isEmpty()||txtGia1.getText().isEmpty()||txtGia2.getText().isEmpty()||txtLoaiSan.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Khong duoc de trong");
+            return true;
+        }
+        return false;
+    }
     private void button4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button4ActionPerformed
-        // TODO add your handling code here:
+
+        try {
+            
+            String id = service.getList().get(index).getId();
+            String tenSan = txtTenSan.getText();
+            int loaiSan = Integer.parseInt(txtLoaiSan.getText());
+            Double gia1 = Double.parseDouble(txtGia1.getText());
+            Double gia2 = Double.parseDouble(txtGia2.getText());
+            SanBong sb = new SanBong(tenSan, gia1, gia2, loaiSan);
+            JOptionPane.showMessageDialog(this, service.updateSB(sb, id));
+            loadToTable(service.getList());
+            
+        } catch (Exception e) {
+        }
+
     }//GEN-LAST:event_button4ActionPerformed
 
     private void button5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button5ActionPerformed
-        // TODO add your handling code here:
+        int choice = JOptionPane.showConfirmDialog(this, "Chắc chắn xóa?");
+        if (choice == JOptionPane.YES_OPTION) {
+            String id = service.getList().get(index).getId();
+        JOptionPane.showMessageDialog(this, service.deleteSB(id));
+        loadToTable(service.getList());
+        }
     }//GEN-LAST:event_button5ActionPerformed
+
+    private void tblBangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblBangMouseClicked
+        index = tblBang.getSelectedRow();
+        showIndex();
+    }//GEN-LAST:event_tblBangMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -275,7 +312,17 @@ public class FormQLS extends javax.swing.JPanel {
         model = (DefaultTableModel) tblBang.getModel();
         model.setRowCount(0);
         for (SanBong sanBong : sb) {
-            model.addRow(new Object[]{sanBong.getTenSan(),sanBong.getLoaiSan(),sanBong.getGia(),sanBong.getGia2()});
+            model.addRow(new Object[]{sanBong.getTenSan(), sanBong.getLoaiSan(), sanBong.getGia(), sanBong.getGia2()});
         }
+    }
+
+    private void showIndex() {
+        SanBong sb = service.getList().get(index);
+        String id = sb.getId();
+        txtTenSan.setText(sb.getTenSan());
+        txtLoaiSan.setText(sb.getLoaiSan() + "");
+        txtGia1.setText(sb.getGia() + "");
+        txtGia2.setText(sb.getGia2() + "");
+        tblBang.setRowSelectionInterval(index, index);
     }
 }

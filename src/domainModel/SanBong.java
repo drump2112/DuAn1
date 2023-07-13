@@ -40,6 +40,14 @@ public class SanBong {
         this.gia2 = gia2;
         this.loaiSan = loaiSan;
     }
+
+    public SanBong(String id, String tenSan, Double gia, Double gia2, Integer loaiSan) {
+        this.id = id;
+        this.tenSan = tenSan;
+        this.gia = gia;
+        this.gia2 = gia2;
+        this.loaiSan = loaiSan;
+    }
     
 
     public String getId() {

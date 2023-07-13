@@ -23,6 +23,7 @@ public class RPSanBong {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {                
                 SanBong sb = new SanBong();
+                sb.setId(rs.getString("id"));
                 sb.setMa(rs.getString("ma"));
                 sb.setTenSan(rs.getString("ten"));
                 sb.setGia(rs.getDouble("gia"));
@@ -46,6 +47,36 @@ public class RPSanBong {
             ps.setObject(2, sb.getLoaiSan());
             ps.setObject(3, sb.getGia());
             ps.setObject(4, sb.getGia2());
+            int rs = ps.executeUpdate();
+            return rs >0;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+    
+    public boolean updateSB(SanBong sb, String id){ 
+        String sql = "update sanbong set ten =?, loaisan=?, gia=?, gia2=? where id=?";
+        try (Connection con = dbConnection.getConnection();
+                PreparedStatement ps= con.prepareStatement(sql)){
+            ps.setObject(1, sb.getTenSan());
+            ps.setObject(2, sb.getLoaiSan());
+            ps.setObject(3, sb.getGia());
+            ps.setObject(4, sb.getGia2());
+            ps.setObject(5, id);
+            int rs = ps.executeUpdate();
+            return rs>0;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+    
+    public boolean deleteSB(String id){
+        String sql = "delete sanbong where id =?";
+        try(Connection con = dbConnection.getConnection();
+                PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setObject(1, id);
             int rs = ps.executeUpdate();
             return rs >0;
         } catch (Exception e) {
