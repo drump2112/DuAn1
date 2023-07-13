@@ -4,9 +4,13 @@
  */
 package view;
 
+import domainModel.SanBong;
 import java.awt.Color;
+import java.util.ArrayList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.table.DefaultTableModel;
+import service.ServiceSanBong;
 import swing.swing.ScrollBar;
 
 /**
@@ -14,10 +18,10 @@ import swing.swing.ScrollBar;
  * @author sethk
  */
 public class FormQLS extends javax.swing.JPanel {
-
-    /**
-     * Creates new form FormQLS
-     */
+    DefaultTableModel model = new DefaultTableModel();
+    ServiceSanBong service = new ServiceSanBong();
+    int index;
+    
     public FormQLS() {
         initComponents();
         panelButton.setBackground(new Color(0, 0, 0, 0));
@@ -27,6 +31,8 @@ public class FormQLS extends javax.swing.JPanel {
         JPanel p = new JPanel();
         p.setBackground(Color.WHITE);
         spTable.setCorner(JScrollPane.UPPER_RIGHT_CORNER, p);
+        
+        loadToTable(service.getList());
     }
 
     /**
@@ -41,7 +47,7 @@ public class FormQLS extends javax.swing.JPanel {
         panelSeth4 = new swing.component.PanelSeth();
         jLabel2 = new javax.swing.JLabel();
         spTable = new javax.swing.JScrollPane();
-        table1 = new swing.swing.Table();
+        tblBang = new swing.swing.Table();
         jLabel1 = new javax.swing.JLabel();
         textField1 = new swing.controls.TextField();
         jLabel3 = new javax.swing.JLabel();
@@ -65,7 +71,7 @@ public class FormQLS extends javax.swing.JPanel {
 
         spTable.setBorder(null);
 
-        table1.setModel(new javax.swing.table.DefaultTableModel(
+        tblBang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -73,7 +79,7 @@ public class FormQLS extends javax.swing.JPanel {
                 "Tên Sân", "Loại", "Giá 1 ", "Giá 2"
             }
         ));
-        spTable.setViewportView(table1);
+        spTable.setViewportView(tblBang);
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -251,10 +257,18 @@ public class FormQLS extends javax.swing.JPanel {
     private swing.swing.PanelBorder panelButton;
     private swing.component.PanelSeth panelSeth4;
     private javax.swing.JScrollPane spTable;
-    private swing.swing.Table table1;
+    private swing.swing.Table tblBang;
     private swing.controls.TextField textField1;
     private swing.controls.TextField textField2;
     private swing.controls.TextField textField3;
     private swing.controls.TextField textField4;
     // End of variables declaration//GEN-END:variables
+
+    private void loadToTable(ArrayList<SanBong> sb) {
+        model = (DefaultTableModel) tblBang.getModel();
+        model.setRowCount(0);
+        for (SanBong sanBong : sb) {
+            model.addRow(new Object[]{sanBong.getTenSan(),sanBong.getLoaiSan(),sanBong.getGia(),sanBong.getGia2()});
+        }
+    }
 }
