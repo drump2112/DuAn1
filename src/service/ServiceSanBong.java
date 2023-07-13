@@ -13,10 +13,18 @@ import repository.RPSanBong;
  * @author Quan Lew
  */
 public class ServiceSanBong {
+
     RPSanBong repo = new RPSanBong();
-    
-    public ArrayList<SanBong> getList(){
+
+    public ArrayList<SanBong> getList() {
         return repo.getListSB();
-       
+
+    }
+    
+    public String addSB(SanBong sb){
+        if (repo.addSB(sb)) {
+            return "Them san bong thanh cong";
+        }
+        return "Them san bong that bai";
     }
 }

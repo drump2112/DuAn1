@@ -38,4 +38,19 @@ public class RPSanBong {
         return lstSB;
     }
     
+    public boolean addSB(SanBong sb){
+        String sql = "insert into SanBong(ten,loaisan,gia,gia2) values(?,?,?,?)";
+        try (Connection con = dbConnection.getConnection();
+                PreparedStatement ps= con.prepareStatement(sql)){
+            ps.setObject(1, sb.getTenSan());
+            ps.setObject(2, sb.getLoaiSan());
+            ps.setObject(3, sb.getGia());
+            ps.setObject(4, sb.getGia2());
+            int rs = ps.executeUpdate();
+            return rs >0;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 }
