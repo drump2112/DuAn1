@@ -17,7 +17,7 @@ public class NhanVien {
     private String hoTen;
     private String Email;
     private String sdt;
-    private String idCV;
+    private String MaCv;
     private String diaChi;
     private String cmt;
     private Date ngaySinh;
@@ -26,17 +26,99 @@ public class NhanVien {
     public NhanVien() {
     }
 
-    public NhanVien(String id, String ma, String hoTen, String Email, String sdt, String idCV, String diaChi, String cmt, Date ngaySinh, String gioiTinh) {
+    public NhanVien(String id, String ma, String hoTen, String Email, String sdt, String MaCv, String diaChi, String cmt, Date ngaySinh, String gioiTinh) {
         this.id = id;
         this.ma = ma;
         this.hoTen = hoTen;
         this.Email = Email;
         this.sdt = sdt;
-        this.idCV = idCV;
+        this.MaCv = MaCv;
         this.diaChi = diaChi;
         this.cmt = cmt;
         this.ngaySinh = ngaySinh;
         this.gioiTinh = gioiTinh;
     }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getMa() {
+        return ma;
+    }
+
+    public void setMa(String ma) {
+        this.ma = ma;
+    }
+
+    public String getHoTen() {
+        return hoTen;
+    }
+
+    public void setHoTen(String hoTen) {
+        this.hoTen = hoTen;
+    }
+
+    public String getEmail() {
+        return Email;
+    }
+
+    public void setEmail(String Email) {
+        this.Email = Email;
+    }
+
+    public String getSdt() {
+        return sdt;
+    }
+
+    public void setSdt(String sdt) {
+        this.sdt = sdt;
+    }
+
+    public String getMaCv() {
+        return MaCv;
+    }
+
+    public void setMaCv(String MaCv) {
+        this.MaCv = MaCv;
+    }
+
+    public String getDiaChi() {
+        return diaChi;
+    }
+
+    public void setDiaChi(String diaChi) {
+        this.diaChi = diaChi;
+    }
+
+    public String getCmt() {
+        return cmt;
+    }
+
+    public void setCmt(String cmt) {
+        this.cmt = cmt;
+    }
+
+    public Date getNgaySinh() {
+        return ngaySinh;
+    }
+
+    public void setNgaySinh(Date ngaySinh) {
+        this.ngaySinh = ngaySinh;
+    }
+
+    public String getGioiTinh() {
+        return gioiTinh;
+    }
+
+    public void setGioiTinh(String gioiTinh) {
+        this.gioiTinh = gioiTinh;
+    }
+
+
 
 }

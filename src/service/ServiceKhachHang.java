@@ -5,6 +5,7 @@
 package service;
 
 import domainModel.KhachHang;
+import java.util.ArrayList;
 import repository.RPKhachHang;
 
 /**
@@ -20,5 +21,30 @@ public class ServiceKhachHang {
             return "Thêm Khách hàng Thành Công";
         }
         return "them khong thanh cong";
+    }
+
+    public ArrayList<KhachHang> getAllKH() {
+        return repo.getListKH();
+    }
+
+    public String insertKH(KhachHang kh) {
+        if (repo.insertKH(kh)) {
+            return "thêm khách hàng thành công";
+        }
+        return "thêm khách hàng thất bại";
+    }
+
+    public String updateKH(String id, KhachHang kh) {
+        if (repo.updateKH(id, kh)) {
+            return "thêm khách hàng thành công";
+        }
+        return "thêm khách hàng thất bại";
+    }
+
+    public String delteteKH(String id) {
+        if (repo.deleteKH(id)) {
+            return "thêm khách hàng thành công";
+        }
+        return "thêm khách hàng thất bại";
     }
 }
