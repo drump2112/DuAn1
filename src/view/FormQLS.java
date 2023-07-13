@@ -7,6 +7,7 @@ package view;
 import domainModel.SanBong;
 import java.awt.Color;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
@@ -49,17 +50,17 @@ public class FormQLS extends javax.swing.JPanel {
         spTable = new javax.swing.JScrollPane();
         tblBang = new swing.swing.Table();
         jLabel1 = new javax.swing.JLabel();
-        textField1 = new swing.controls.TextField();
+        txtTenSan = new swing.controls.TextField();
         jLabel3 = new javax.swing.JLabel();
-        textField2 = new swing.controls.TextField();
+        txtGia1 = new swing.controls.TextField();
         jLabel4 = new javax.swing.JLabel();
-        textField3 = new swing.controls.TextField();
+        txtLoaiSan = new swing.controls.TextField();
         jLabel8 = new javax.swing.JLabel();
         panelButton = new swing.swing.PanelBorder();
         button3 = new swing.controls.Button();
         button4 = new swing.controls.Button();
         button5 = new swing.controls.Button();
-        textField4 = new swing.controls.TextField();
+        txtGia2 = new swing.controls.TextField();
 
         panelSeth4.setColor1(new java.awt.Color(28, 181, 224));
         panelSeth4.setColor2(new java.awt.Color(0, 0, 70));
@@ -85,19 +86,19 @@ public class FormQLS extends javax.swing.JPanel {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Tên Sân");
 
-        textField1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        txtTenSan.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Loại Sân");
 
-        textField2.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        txtGia1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
 
         jLabel4.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Giá 1");
 
-        textField3.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        txtLoaiSan.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
 
         jLabel8.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
@@ -154,7 +155,7 @@ public class FormQLS extends javax.swing.JPanel {
                 .addContainerGap(63, Short.MAX_VALUE))
         );
 
-        textField4.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        txtGia2.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
 
         javax.swing.GroupLayout panelSeth4Layout = new javax.swing.GroupLayout(panelSeth4);
         panelSeth4.setLayout(panelSeth4Layout);
@@ -174,16 +175,16 @@ public class FormQLS extends javax.swing.JPanel {
                                     .addComponent(jLabel1))
                                 .addGap(31, 31, 31)
                                 .addGroup(panelSeth4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(textField3, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(textField1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtLoaiSan, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtTenSan, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(130, 130, 130)
                                 .addGroup(panelSeth4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                                 .addGroup(panelSeth4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(textField2, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(textField4, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtGia1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtGia2, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(144, 144, 144))
                             .addGroup(panelSeth4Layout.createSequentialGroup()
                                 .addGap(314, 314, 314)
@@ -200,15 +201,15 @@ public class FormQLS extends javax.swing.JPanel {
                         .addGap(87, 87, 87)
                         .addGroup(panelSeth4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(textField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtTenSan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(textField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtGia1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(21, 21, 21)
                         .addGroup(panelSeth4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(textField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtLoaiSan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(textField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtGia2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(panelSeth4Layout.createSequentialGroup()
                         .addGap(23, 23, 23)
                         .addComponent(panelButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -233,7 +234,13 @@ public class FormQLS extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void button3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button3ActionPerformed
-        // TODO add your handling code here:
+        String tenSan = txtTenSan.getText();
+        int loaiSan = Integer.parseInt(txtLoaiSan.getText());
+        Double gia1 = Double.parseDouble(txtGia1.getText());
+        Double gia2 = Double.parseDouble(txtGia2.getText());
+        SanBong sb = new SanBong(tenSan, gia1, gia2, loaiSan);
+        JOptionPane.showMessageDialog(this, service.addSB(sb));
+        loadToTable(service.getList());
     }//GEN-LAST:event_button3ActionPerformed
 
     private void button4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button4ActionPerformed
@@ -258,10 +265,10 @@ public class FormQLS extends javax.swing.JPanel {
     private swing.component.PanelSeth panelSeth4;
     private javax.swing.JScrollPane spTable;
     private swing.swing.Table tblBang;
-    private swing.controls.TextField textField1;
-    private swing.controls.TextField textField2;
-    private swing.controls.TextField textField3;
-    private swing.controls.TextField textField4;
+    private swing.controls.TextField txtGia1;
+    private swing.controls.TextField txtGia2;
+    private swing.controls.TextField txtLoaiSan;
+    private swing.controls.TextField txtTenSan;
     // End of variables declaration//GEN-END:variables
 
     private void loadToTable(ArrayList<SanBong> sb) {

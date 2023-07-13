@@ -34,6 +34,14 @@ public class SanBong {
         this.trangThai = trangThai;
     }
 
+    public SanBong(String tenSan, Double gia, Double gia2, Integer loaiSan) {
+        this.tenSan = tenSan;
+        this.gia = gia;
+        this.gia2 = gia2;
+        this.loaiSan = loaiSan;
+    }
+    
+
     public String getId() {
         return id;
     }
