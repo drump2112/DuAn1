@@ -223,14 +223,14 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="swing.swing.Table" name="table1">
+                <Component class="swing.swing.Table" name="tblNV">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                       <Table columnCount="9" rowCount="0">
                         <Column editable="true" title="M&#xe3; NV" type="java.lang.Object"/>
                         <Column editable="true" title="H&#x1ecd; T&#xea;n" type="java.lang.Object"/>
                         <Column editable="true" title="Gi&#x1edb;i T&#xed;nh" type="java.lang.Object"/>
-                        <Column editable="true" title="IDCV" type="java.lang.Object"/>
+                        <Column editable="true" title="MA.CV" type="java.lang.Object"/>
                         <Column editable="true" title="Email" type="java.lang.Object"/>
                         <Column editable="true" title="CCCD" type="java.lang.Object"/>
                         <Column editable="true" title="S&#x110;T" type="java.lang.Object"/>
@@ -374,7 +374,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="IDCV"/>
+                <Property name="text" type="java.lang.String" value="MACV"/>
               </Properties>
             </Component>
             <Component class="swing.controls.Combobox" name="cboCV">

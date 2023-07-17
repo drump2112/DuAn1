@@ -4,9 +4,17 @@
  */
 package view;
 
+import ViewModel.QLChucVu;
+import domainModel.ChucVu;
+import domainModel.NhanVien;
 import java.awt.Color;
+import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.table.DefaultTableModel;
+import service.ServiceChucVu;
+import service.ServiceNhanVien;
 import swing.swing.ScrollBar;
 
 /**
@@ -14,7 +22,10 @@ import swing.swing.ScrollBar;
  * @author sethk
  */
 public class FormQLNV extends javax.swing.JPanel {
-
+    
+    DefaultTableModel model = new DefaultTableModel();
+    ServiceNhanVien service = new ServiceNhanVien();
+    int index;
     /**
      * Creates new form FormQLNV
      */
@@ -31,7 +42,11 @@ public class FormQLNV extends javax.swing.JPanel {
         JPanel p = new JPanel();
         p.setBackground(Color.WHITE);
         spTable.setCorner(JScrollPane.UPPER_RIGHT_CORNER, p);
+        loadToTable(service.getAllNV());
+     
+       
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -47,7 +62,7 @@ public class FormQLNV extends javax.swing.JPanel {
         panelSeth4 = new swing.component.PanelSeth();
         jLabel2 = new javax.swing.JLabel();
         spTable = new javax.swing.JScrollPane();
-        table1 = new swing.swing.Table();
+        tblNV = new swing.swing.Table();
         jLabel1 = new javax.swing.JLabel();
         textField1 = new swing.controls.TextField();
         jLabel3 = new javax.swing.JLabel();
@@ -83,15 +98,15 @@ public class FormQLNV extends javax.swing.JPanel {
 
         spTable.setBorder(null);
 
-        table1.setModel(new javax.swing.table.DefaultTableModel(
+        tblNV.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Mã NV", "Họ Tên", "Giới Tính", "IDCV", "Email", "CCCD", "SĐT", "Địa Chỉ", "Ngày Sinh"
+                "Mã NV", "Họ Tên", "Giới Tính", "MA.CV", "Email", "CCCD", "SĐT", "Địa Chỉ", "Ngày Sinh"
             }
         ));
-        spTable.setViewportView(table1);
+        spTable.setViewportView(tblNV);
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -119,7 +134,7 @@ public class FormQLNV extends javax.swing.JPanel {
 
         jLabel6.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("IDCV");
+        jLabel6.setText("MACV");
 
         jLabel7.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
@@ -382,7 +397,7 @@ public class FormQLNV extends javax.swing.JPanel {
     private swing.RadioButtonCustom rb1;
     private swing.RadioButtonCustom rb2;
     private javax.swing.JScrollPane spTable;
-    private swing.swing.Table table1;
+    private swing.swing.Table tblNV;
     private swing.controls.TextField textField1;
     private swing.controls.TextField textField2;
     private swing.controls.TextField textField3;
@@ -391,4 +406,12 @@ public class FormQLNV extends javax.swing.JPanel {
     private swing.controls.TextField textField7;
     private swing.controls.TextField txtCCCD;
     // End of variables declaration//GEN-END:variables
+
+    private void loadToTable(ArrayList<NhanVien> nv) {
+        model = (DefaultTableModel) tblNV.getModel();
+        model.setRowCount(0);
+        for (NhanVien nhanVien : nv) {
+            model.addRow(new Object[]{nhanVien.getMa(),nhanVien.getHoTen(),nhanVien.getGioiTinh(),nhanVien.getMaCv(),nhanVien.getEmail(),nhanVien.getCmt(),nhanVien.getSdt(),nhanVien.getDiaChi(),nhanVien.getNgaySinh()});
+        }
+    }
 }
