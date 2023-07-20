@@ -22,6 +22,7 @@ public class FormQuanLy extends javax.swing.JFrame {
     FormQLKH formQLKH;
     FormQLS formQLS;
     FormDangNhap formDn;
+    FormDichVu formDichVu;
 
     /**
      * Creates new form FormQuanLy
@@ -36,6 +37,7 @@ public class FormQuanLy extends javax.swing.JFrame {
         formTT = new FormThanhToan();
         formQLS = new FormQLS();
         formQLKH = new FormQLKH();
+        formDichVu = new FormDichVu();
 
         menu.initMoving(FormQuanLy.this);
         menu.addEventMenuSelected(new EventMenuSelected() {
@@ -49,15 +51,17 @@ public class FormQuanLy extends javax.swing.JFrame {
                     setForm(formTT);
                 } else if (index == 3) {
                     setForm(formTK);
-                } else if (index == 4) {
+                } else if (index == 4) { 
                     setForm(formTK);
                 } else if (index == 8) {
                     setForm(formQLS);
                 } else if (index == 9) {
                     setForm(formQLNV);
-                } else if (index == 10) {
+                } else if (index == 10) { 
                     setForm(formQLKH);
-                } else if (index == 15) {
+                }else if(index == 12) {
+                    setForm(formDichVu);
+                }else if (index == 15) {
                     logOut();             
                 }
             }

@@ -13,16 +13,24 @@ public class DichVu {
     private String id;
     private String maDV;
     private String tenDV;
-    private Integer dvt;
+    private String dvt;
     private Double giaTien;
     private Integer soLuong;
 
     public DichVu() {
     }
 
-    public DichVu(String id, String maDV, String tenDV, Integer dvt, Double giaTien, Integer soLuong) {
+    public DichVu(String id, String maDV, String tenDV, String dvt, Double giaTien, Integer soLuong) {
         this.id = id;
         this.maDV = maDV;
+        this.tenDV = tenDV;
+        this.dvt = dvt;
+        this.giaTien = giaTien;
+        this.soLuong = soLuong;
+    }
+
+    public DichVu(String id, String tenDV, String dvt, Double giaTien, Integer soLuong) {
+        this.id = id;
         this.tenDV = tenDV;
         this.dvt = dvt;
         this.giaTien = giaTien;
@@ -53,11 +61,11 @@ public class DichVu {
         this.tenDV = tenDV;
     }
 
-    public Integer getDvt() {
+    public String getDvt() {
         return dvt;
     }
 
-    public void setDvt(Integer dvt) {
+    public void setDvt(String dvt) {
         this.dvt = dvt;
     }
 
@@ -76,5 +84,5 @@ public class DichVu {
     public void setSoLuong(Integer soLuong) {
         this.soLuong = soLuong;
     }
-    
+
 }

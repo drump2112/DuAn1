@@ -13,14 +13,14 @@ public class QLDichVu {
     private String id;
     private String maDV;
     private String tenDV;
-    private Integer dvt;
+    private String dvt;
     private Double giaTien;
     private Integer soLuong;
 
     public QLDichVu() {
     }
 
-    public QLDichVu(String id, String maDV, String tenDV, Integer dvt, Double giaTien, Integer soLuong) {
+    public QLDichVu(String id, String maDV, String tenDV, String dvt, Double giaTien, Integer soLuong) {
         this.id = id;
         this.maDV = maDV;
         this.tenDV = tenDV;
@@ -29,6 +29,15 @@ public class QLDichVu {
         this.soLuong = soLuong;
     }
 
+    public QLDichVu(String id, String tenDV, String dvt, Double giaTien, Integer soLuong) {
+        this.id = id;
+        this.tenDV = tenDV;
+        this.dvt = dvt;
+        this.giaTien = giaTien;
+        this.soLuong = soLuong;
+    }
+    
+    
     public String getId() {
         return id;
     }
@@ -53,11 +62,11 @@ public class QLDichVu {
         this.tenDV = tenDV;
     }
 
-    public Integer getDvt() {
+    public String getDvt() {
         return dvt;
     }
 
-    public void setDvt(Integer dvt) {
+    public void setDvt(String dvt) {
         this.dvt = dvt;
     }
 
