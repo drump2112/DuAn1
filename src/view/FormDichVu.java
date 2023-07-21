@@ -7,6 +7,7 @@ package view;
 import java.awt.Color;
 import java.util.*;
 import ViewModel.QLDichVu;
+import java.text.DecimalFormat;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import repository.RPDichVu;
@@ -23,6 +24,7 @@ public class FormDichVu extends javax.swing.JPanel {
     private DefaultTableModel model = new DefaultTableModel();
     private InterfaceDichVu service = new ServiceDichVu();
     private int Index, click;
+    DecimalFormat decimalFormat = new DecimalFormat("#,##0");
 
     /**
      * Creates new form FormDichVu
@@ -47,46 +49,65 @@ public class FormDichVu extends javax.swing.JPanel {
             return false;
         }
 
+        for (char c : txtGia.getText().trim().toCharArray()) {
+            if (c == ' ') {
+                JOptionPane.showMessageDialog(null, "Không được có dấu cách trong giá");
+                return false;
+            }
+        }
+
+        for (char c : txtSoLuong.getText().trim().toCharArray()) {
+            if (c == ' ') {
+                JOptionPane.showMessageDialog(null, "Không được có dấu cách trong số lượng");
+                return false;
+            } else if (c == '.' || c == ',') {
+                JOptionPane.showMessageDialog(null, "Số lượng không được có dấu '.' hoặc ','");
+                return false;
+            }
+        }
+
         try {
-            Double.parseDouble(txtGia.getText());
+            Double.parseDouble(txtGia.getText().trim());
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Giá phải là số");
             return false;
         }
 
         try {
-            Integer.parseInt(txtSoLuong.getText());
+            Integer.parseInt(txtSoLuong.getText().trim());
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Số lượng phải là số");
             return false;
         }
 
-        if (Double.parseDouble(txtGia.getText()) < 0 || Double.parseDouble(txtGia.getText()) < 10000.0) {
+        String gia = txtGia.getText().replace(".", "").replace(",", "");
+
+        if (Double.parseDouble(gia.trim()) < 0 || Double.parseDouble(gia.trim()) < 10000.0) {
             JOptionPane.showMessageDialog(null, "Giá không được bé hơn 0 và 10000");
             return false;
         }
 
-        if (Integer.parseInt(txtSoLuong.getText()) < 0) {
+        if (Integer.parseInt(txtSoLuong.getText().trim()) < 0) {
             JOptionPane.showMessageDialog(null, "Số lượng không bé hơn 0");
             return false;
         }
 
-        if (txtGia.getText().length() > 1000000) {
+        if (Double.parseDouble(gia.trim()) > 1000000.0) {
             JOptionPane.showMessageDialog(null, "Giá không được vượt quá 1000000");
             return false;
         }
 
-        if (txtSoLuong.getText().length() > 200) {
+        if (Integer.parseInt(txtSoLuong.getText().trim()) > 200) {
             JOptionPane.showMessageDialog(null, "Số lượng không được vượt quá 200");
             return false;
         }
 
-        if (Double.parseDouble(txtGia.getText()) == 0) {
+        if (Double.parseDouble(gia.trim()) == 0) {
             JOptionPane.showMessageDialog(null, "Giá không được là 0");
             return false;
         }
 
-        if (Integer.parseInt(txtSoLuong.getText()) == 0) {
+        if (Integer.parseInt(txtSoLuong.getText().trim()) == 0) {
             JOptionPane.showMessageDialog(null, "Số lượng không là 0");
             return false;
         }
@@ -304,10 +325,11 @@ public class FormDichVu extends javax.swing.JPanel {
         try {
             if (checkText()) {
                 QLDichVu qldv = new QLDichVu();
-                qldv.setTenDV(txtTenDichVu.getText());
-                qldv.setDvt(txtDVT.getText());
-                qldv.setGiaTien(Double.parseDouble(txtGia.getText()));
-                qldv.setSoLuong(Integer.parseInt(txtSoLuong.getText()));
+                qldv.setTenDV(txtTenDichVu.getText().trim());
+                qldv.setDvt(txtDVT.getText().trim());
+                String gia = txtGia.getText().replace(".", "").replace(",", "");
+                qldv.setGiaTien(Double.parseDouble(gia.trim()));
+                qldv.setSoLuong(Integer.parseInt(txtSoLuong.getText().trim()));
                 service.themDichVu(qldv);
                 fillToTable(service.getListDichVu());
                 clean();
@@ -326,10 +348,11 @@ public class FormDichVu extends javax.swing.JPanel {
             if (click == 1) {
                 if (checkText()) {
                     QLDichVu qldv = service.getListDichVu().get(Index);
-                    qldv.setTenDV(txtTenDichVu.getText());
-                    qldv.setDvt(txtDVT.getText());
-                    qldv.setGiaTien(Double.parseDouble(txtGia.getText()));
-                    qldv.setSoLuong(Integer.parseInt(txtSoLuong.getText()));
+                    qldv.setTenDV(txtTenDichVu.getText().trim());
+                    qldv.setDvt(txtDVT.getText().trim());
+                    String gia = txtGia.getText().replace(".", "").replace(",", "");
+                    qldv.setGiaTien(Double.parseDouble(gia.trim()));
+                    qldv.setSoLuong(Integer.parseInt(txtSoLuong.getText().trim()));
                     service.suaDichVu(qldv);
                     fillToTable(service.getListDichVu());
                     showIndex();
@@ -405,7 +428,7 @@ public class FormDichVu extends javax.swing.JPanel {
         model.setRowCount(0);
         for (QLDichVu qLDichVu : listDichVu) {
             model.addRow(new Object[]{
-                qLDichVu.getTenDV(), qLDichVu.getDvt(), qLDichVu.getSoLuong(), qLDichVu.getGiaTien()
+                qLDichVu.getTenDV(), qLDichVu.getDvt(), qLDichVu.getSoLuong(), decimalFormat.format(qLDichVu.getGiaTien())
             });
         }
     }
@@ -416,7 +439,7 @@ public class FormDichVu extends javax.swing.JPanel {
             txtTenDichVu.setText(qldv.getTenDV());
             txtDVT.setText(qldv.getDvt());
             txtGia.setText(qldv.getGiaTien() + "");
-            txtSoLuong.setText(qldv.getSoLuong() + "");
+            txtSoLuong.setText(decimalFormat.format(qldv.getSoLuong()));
         } catch (Exception e) {
             return;
         }
