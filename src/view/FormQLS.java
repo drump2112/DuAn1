@@ -4,7 +4,7 @@
  */
 package view;
 
-import domainModel.SanBong;
+import ViewModel.QLSanBong;
 import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -257,13 +257,13 @@ public class FormQLS extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
     public boolean check() {
-        if (txtMaSan.getText().isEmpty() || txtTenSan.getText().isEmpty() || txtLoaiSan.getText().isEmpty() || txtGia1.getText().isEmpty() || txtGia2.getText().isEmpty()) {
+        if (txtMaSan.getText().trim().isEmpty() || txtTenSan.getText().trim().isEmpty() || txtLoaiSan.getText().trim().isEmpty() || txtGia1.getText().trim().isEmpty() || txtGia2.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Không được để trống thông tin");
             return true;
         }
-           Double gia;
+        Double gia;
         try {
-            gia = Double.parseDouble(txtGia1.getText()); 
+            gia = Double.parseDouble(txtGia1.getText());
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Giá phải là số");
             return true;
@@ -282,32 +282,46 @@ public class FormQLS extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Loại sân phải là số");
             return true;
         }
-         return false;
+        if (txtMaSan.getText().length() > 3 || txtMaSan.getText().length() < 3) {
+            JOptionPane.showMessageDialog(this, "Mã phải = 3 ký tự");
+            return true;
+        }
+       
+        return false;
+    }
+    public boolean checkMa(){
+         ArrayList<QLSanBong> lstSB = service.getList();
+        for (QLSanBong qLSanBong : lstSB) {
+            if (txtMaSan.getText().equalsIgnoreCase(qLSanBong.getMa())) {
+                JOptionPane.showMessageDialog(this, "Mã không được trùng");
+                return true;
+            }
+        }
+        return false;
     }
 
-
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        if (!check() ) {
-            String tenSan = txtMaSan.getText();
+        if (!check()&&!checkMa()) {
+            String tenSan = txtTenSan.getText();
             String maSan = txtMaSan.getText();
             int loaiSan = Integer.parseInt(txtLoaiSan.getText());
             Double gia1 = Double.parseDouble(txtGia1.getText());
             Double gia2 = Double.parseDouble(txtGia2.getText());
-            SanBong sb = new SanBong(maSan, tenSan, gia1, gia2, loaiSan);
+            QLSanBong sb = new QLSanBong(maSan, tenSan, gia1, gia2, loaiSan);
             JOptionPane.showMessageDialog(this, service.addSB(sb));
             loadToTable(service.getList());
         }
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-            if (!check()) {
-             String id = service.getList().get(index).getId();
+        if (!check()) {
+            String id = service.getList().get(index).getId();
             String maSan = txtMaSan.getText();
-            String tenSan = txtMaSan.getText();
+            String tenSan = txtTenSan.getText();
             int loaiSan = Integer.parseInt(txtLoaiSan.getText());
             Double gia1 = Double.parseDouble(txtGia1.getText());
             Double gia2 = Double.parseDouble(txtGia2.getText());
-            SanBong sb = new SanBong(maSan, tenSan, gia1, gia2, loaiSan);
+            QLSanBong sb = new QLSanBong(maSan, tenSan, gia1, gia2, loaiSan);
             JOptionPane.showMessageDialog(this, service.updateSB(sb, id));
             loadToTable(service.getList());
         }
@@ -349,16 +363,16 @@ public class FormQLS extends javax.swing.JPanel {
     private swing.controls.TextField txtTenSan;
     // End of variables declaration//GEN-END:variables
 
-    private void loadToTable(ArrayList<SanBong> sb) {
+    private void loadToTable(ArrayList<QLSanBong> sb) {
         model = (DefaultTableModel) tblBang.getModel();
         model.setRowCount(0);
-        for (SanBong sanBong : sb) {
+        for (QLSanBong sanBong : sb) {
             model.addRow(new Object[]{sanBong.getMa(), sanBong.getTenSan(), sanBong.getLoaiSan(), sanBong.getGia(), sanBong.getGia2()});
         }
     }
 
     private void showIndex() {
-        SanBong sb = service.getList().get(index);
+        QLSanBong sb = service.getList().get(index);
         txtMaSan.setText(sb.getMa());
         String id = sb.getId();
         txtTenSan.setText(sb.getTenSan());

@@ -2,16 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package domainModel;
-
-import java.sql.Time;
-import java.util.Date;
+package ViewModel;
 
 /**
  *
- * @author sethk
+ * @author Quan Lew
  */
-public class SanBong {
+public class QLSanBong {
 
     private String id;
     private String ma;
@@ -21,10 +18,10 @@ public class SanBong {
     private Integer loaiSan;
     private Integer trangThai;
 
-    public SanBong() {
+    public QLSanBong() {
     }
 
-    public SanBong(String id, String ma, String tenSan, Double gia, Double gia2, Integer loaiSan, Integer trangThai) {
+    public QLSanBong(String id, String ma, String tenSan, Double gia, Double gia2, Integer loaiSan, Integer trangThai) {
         this.id = id;
         this.ma = ma;
         this.tenSan = tenSan;
@@ -34,14 +31,7 @@ public class SanBong {
         this.trangThai = trangThai;
     }
 
-    public SanBong(String tenSan, Double gia, Double gia2, Integer loaiSan) {
-        this.tenSan = tenSan;
-        this.gia = gia;
-        this.gia2 = gia2;
-        this.loaiSan = loaiSan;
-    }
-
-    public SanBong(String ma, String tenSan, Double gia, Double gia2, Integer loaiSan) {
+    public QLSanBong(String ma, String tenSan, Double gia, Double gia2, Integer loaiSan) {
         this.ma = ma;
         this.tenSan = tenSan;
         this.gia = gia;
@@ -49,7 +39,7 @@ public class SanBong {
         this.loaiSan = loaiSan;
     }
 
-    public SanBong(String id, String ma, String tenSan, Double gia, Double gia2, Integer loaiSan) {
+    public QLSanBong(String id, String ma, String tenSan, Double gia, Double gia2, Integer loaiSan) {
         this.id = id;
         this.ma = ma;
         this.tenSan = tenSan;
@@ -112,6 +102,11 @@ public class SanBong {
 
     public void setTrangThai(Integer trangThai) {
         this.trangThai = trangThai;
+    }
+
+    @Override
+    public String toString() {
+        return "QLSanBong{" + "id=" + id + ", ma=" + ma + ", tenSan=" + tenSan + ", gia=" + gia + ", gia2=" + gia2 + ", loaiSan=" + loaiSan + ", trangThai=" + trangThai + '}';
     }
 
 }
