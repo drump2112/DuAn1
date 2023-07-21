@@ -4,6 +4,7 @@
  */
 package service;
 
+import ViewModel.QLSanBong;
 import domainModel.SanBong;
 import java.util.ArrayList;
 import repository.RPSanBong;
@@ -16,32 +17,39 @@ public class ServiceSanBong {
 
     RPSanBong repo = new RPSanBong();
 
-    public ArrayList<SanBong> getList() {
-        return repo.getListSB();
+    public ArrayList<QLSanBong> getList() {
+        ArrayList<QLSanBong> lstSB = new ArrayList<>();
+        for (SanBong qLSanBong : repo.getListSB()) {
+            QLSanBong qlsb = new QLSanBong(qLSanBong.getId(), qLSanBong.getMa(), qLSanBong.getTenSan(), qLSanBong.getGia(), qLSanBong.getGia2(), qLSanBong.getLoaiSan());
+            lstSB.add(qlsb);
+        }
+        return lstSB;
 
     }
-    
-    public String addSB(SanBong sb){
+
+    public String addSB(QLSanBong qlsb) {
+        SanBong sb = new SanBong(qlsb.getMa(), qlsb.getTenSan(), qlsb.getGia(), qlsb.getGia2(), qlsb.getLoaiSan());
         if (repo.addSB(sb)) {
             return "Thêm sân bóng thành công";
-        }
-        return "Thêm sân bóng thất bại";
-    }
-    
-     public String updateSB(SanBong sb,String id){
-        if (repo.updateSB(sb, id)) {
-            return "Sửa sân bóng thành công";
-        }
-        else{
-            return "Sửa sân bóng thất bại";
+        } else {
+            return "Thêm sân bóng thất bại";
         }
 
     }
-     
-     public String deleteSB(String id){
-         if (repo.deleteSB(id)) {
-             return "Xóa sân bóng thành công";
-         }
-         return "Xóa sân bóng thất bại";
-     }
+
+    public String updateSB(QLSanBong qlsb, String id) {
+        SanBong sb = new SanBong(qlsb.getMa(), qlsb.getTenSan(), qlsb.getGia(), qlsb.getGia2(), qlsb.getLoaiSan());
+        if (repo.updateSB(sb, id)) {
+            return "Sửa sân bóng thành công";
+        } else {
+            return "Sửa sân bóng thất bại thất bại";
+        }
+    }
+
+    public String deleteSB(String id) {
+        if (repo.deleteSB(id)) {
+            return "Xóa sân bóng thành công";
+        }
+        return "Xóa sân bóng thất bại";
+    }
 }
