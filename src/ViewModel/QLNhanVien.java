@@ -2,16 +2,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package domainModel;
+package ViewModel;
 
 import java.util.Date;
 
 /**
  *
- * @author sethk
+ * @author chung
  */
-public class NhanVien {
-
+public class QLNhanVien {
+    
     private String id;
     private String ma;
     private String hoTen;
@@ -23,10 +23,10 @@ public class NhanVien {
     private Date ngaySinh;
     private String gioiTinh;
 
-    public NhanVien() {
+    public QLNhanVien() {
     }
 
-    public NhanVien(String id, String ma, String hoTen, String Email, String sdt, String MaCv, String diaChi, String cmt, Date ngaySinh, String gioiTinh) {
+    public QLNhanVien(String id, String ma, String hoTen, String Email, String sdt, String MaCv, String diaChi, String cmt, Date ngaySinh, String gioiTinh) {
         this.id = id;
         this.ma = ma;
         this.hoTen = hoTen;
@@ -39,7 +39,7 @@ public class NhanVien {
         this.gioiTinh = gioiTinh;
     }
 
-    public NhanVien(String ma, String hoTen, String Email, String sdt, String MaCv, String diaChi, String cmt, Date ngaySinh, String gioiTinh) {
+    public QLNhanVien(String ma, String hoTen, String Email, String sdt, String MaCv, String diaChi, String cmt, Date ngaySinh, String gioiTinh) {
         this.ma = ma;
         this.hoTen = hoTen;
         this.Email = Email;
@@ -51,7 +51,7 @@ public class NhanVien {
         this.gioiTinh = gioiTinh;
     }
 
-    public NhanVien(String hoTen, String Email, String sdt, String MaCv, String diaChi, String cmt, Date ngaySinh, String gioiTinh) {
+    public QLNhanVien(String hoTen, String Email, String sdt, String MaCv, String diaChi, String cmt, Date ngaySinh, String gioiTinh) {
         this.hoTen = hoTen;
         this.Email = Email;
         this.sdt = sdt;
@@ -61,9 +61,8 @@ public class NhanVien {
         this.ngaySinh = ngaySinh;
         this.gioiTinh = gioiTinh;
     }
-    
-    
 
+    
     public String getId() {
         return id;
     }
@@ -143,7 +142,6 @@ public class NhanVien {
     public void setGioiTinh(String gioiTinh) {
         this.gioiTinh = gioiTinh;
     }
-
 
 
 }

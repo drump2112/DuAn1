@@ -14,20 +14,29 @@ public class KhachHang {
     private String ma;
     private String ten;
     private String SDT;
-    private String email;
 
     public KhachHang() {
     }
 
-    public KhachHang(String id, String ma, String ten, String SDT, String email) {
+    public KhachHang(String id, String ma, String ten, String SDT) {
         this.id = id;
         this.ma = ma;
         this.ten = ten;
         this.SDT = SDT;
-        this.email = email;
     }
 
+    public KhachHang(String ma, String ten, String SDT) {
+        this.ma = ma;
+        this.ten = ten;
+        this.SDT = SDT;
+    }
 
+    public KhachHang(String ten, String SDT) {
+        this.ten = ten;
+        this.SDT = SDT;
+    }
+
+    
     public String getId() {
         return id;
     }
@@ -58,14 +67,6 @@ public class KhachHang {
 
     public void setSDT(String SDT) {
         this.SDT = SDT;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
 }

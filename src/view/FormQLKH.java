@@ -4,6 +4,18 @@
  */
 package view;
 
+<<<<<<< HEAD
+import ViewModel.QLKhachHang;
+import java.awt.Color;
+import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.table.DefaultTableModel;
+import service.InterfaceKH;
+import service.KH_impl;
+=======
 import domainModel.KhachHang;
 import java.awt.Color;
 import java.util.ArrayList;
@@ -11,6 +23,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
 import service.ServiceKhachHang;
+>>>>>>> 793e3ff4757eb36426a620cc58ad082748016e18
 import swing.swing.ScrollBar;
 
 /**
@@ -18,10 +31,18 @@ import swing.swing.ScrollBar;
  * @author sethk
  */
 public class FormQLKH extends javax.swing.JPanel {
+<<<<<<< HEAD
+
+    int index = -1;
+    DefaultTableModel model = new DefaultTableModel();
+    InterfaceKH sv = new KH_impl();
+
+=======
     
     DefaultTableModel model = new DefaultTableModel();
     ServiceKhachHang service = new ServiceKhachHang();
     int index;
+>>>>>>> 793e3ff4757eb36426a620cc58ad082748016e18
     /**
      * Creates new form FormQLKH
      */
@@ -37,7 +58,61 @@ public class FormQLKH extends javax.swing.JPanel {
         JPanel p = new JPanel();
         p.setBackground(Color.WHITE);
         spTable.setCorner(JScrollPane.UPPER_RIGHT_CORNER, p);
+<<<<<<< HEAD
+
+        loadData(sv.getAllKH());
+    }
+
+    public void loadData(ArrayList<QLKhachHang> lstQLKH) {
+        model = (DefaultTableModel) tbKhachHang.getModel();
+        model.setRowCount(0);
+        for (QLKhachHang qlKH : lstQLKH) {
+            model.addRow(new Object[]{
+                qlKH.getTen(),
+                qlKH.getSDT(),
+                qlKH.getMa()});
+        }
+    }
+
+    public void clear() {
+        txtSdt.setText("");
+        txtTenKh.setText("");
+        txtmakh.setText("");
+    }
+
+    public void showIndex() {
+        QLKhachHang kh = sv.getAllKH().get(index);
+        txtSdt.setText(kh.getSDT());
+        txtTenKh.setText(kh.getTen());
+        txtmakh.setText(kh.getMa());
+        tbKhachHang.setRowSelectionInterval(index, index);
+    }
+
+    public boolean check() {
+        if (txtSdt.getText().trim().isEmpty() || txtTenKh.getText().trim().isEmpty() || txtmakh.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Không được để trống thông tin");
+            return false;
+        }
+        if (txtmakh.getText().length() < 3 || txtmakh.getText().length() > 3) {
+            JOptionPane.showMessageDialog(this, "Mã phải = 3 ký tự");
+            return false;
+        }
+        if (txtSdt.getText().length() !=10) {
+            JOptionPane.showMessageDialog(this, "sdt phải đủ 10 số");
+            return false;
+        }
+        ArrayList<QLKhachHang> lst = sv.getAllKH();
+        for (QLKhachHang qLKhachHang : lst) {
+            if (txtmakh.getText().equalsIgnoreCase(qLKhachHang.getMa())) {
+                JOptionPane.showMessageDialog(this, "Trùng mã KH");
+                return false;
+            }
+        }
+
+        return true;
+=======
         loadToTable(service.getAllKH());
+>>>>>>> 793e3ff4757eb36426a620cc58ad082748016e18
     }
 
     /**
@@ -59,6 +134,10 @@ public class FormQLKH extends javax.swing.JPanel {
         txtSdt = new swing.controls.TextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+<<<<<<< HEAD
+        txtmakh = new swing.controls.TextField();
+        txtTenKh = new swing.controls.TextField();
+=======
         txtma = new swing.controls.TextField();
         jLabel4 = new javax.swing.JLabel();
         txtTenKh1 = new swing.controls.TextField();
@@ -66,6 +145,7 @@ public class FormQLKH extends javax.swing.JPanel {
         txtEmail = new swing.controls.TextField();
         spTable = new javax.swing.JScrollPane();
         tblKH = new swing.swing.Table();
+>>>>>>> 793e3ff4757eb36426a620cc58ad082748016e18
 
         setPreferredSize(new java.awt.Dimension(1079, 586));
 
@@ -77,6 +157,24 @@ public class FormQLKH extends javax.swing.JPanel {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/customerpng.png"))); // NOI18N
         jLabel2.setText(" Quản Lý Khách Hàng");
 
+<<<<<<< HEAD
+        tbKhachHang.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Họ Tên", "SĐT", "Mã KH"
+            }
+        ));
+        tbKhachHang.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbKhachHangMouseClicked(evt);
+            }
+        });
+        spTable.setViewportView(tbKhachHang);
+
+=======
+>>>>>>> 793e3ff4757eb36426a620cc58ad082748016e18
         btnThem.setForeground(new java.awt.Color(102, 102, 102));
         btnThem.setText("Thêm");
         btnThem.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
@@ -136,10 +234,22 @@ public class FormQLKH extends javax.swing.JPanel {
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("SĐT");
 
+<<<<<<< HEAD
+        jLabel6.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Mã KH");
+
+=======
+>>>>>>> 793e3ff4757eb36426a620cc58ad082748016e18
         jLabel3.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Mã KH");
 
+<<<<<<< HEAD
+        txtmakh.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+
+        txtTenKh.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+=======
         txtma.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
 
         jLabel4.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
@@ -153,6 +263,7 @@ public class FormQLKH extends javax.swing.JPanel {
         jLabel7.setText("Email");
 
         txtEmail.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+>>>>>>> 793e3ff4757eb36426a620cc58ad082748016e18
 
         javax.swing.GroupLayout panelMainLayout = new javax.swing.GroupLayout(panelMain);
         panelMain.setLayout(panelMainLayout);
@@ -160,6 +271,22 @@ public class FormQLKH extends javax.swing.JPanel {
             panelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelMainLayout.createSequentialGroup()
                 .addGap(49, 49, 49)
+<<<<<<< HEAD
+                .addComponent(jLabel3)
+                .addGap(18, 18, 18)
+                .addComponent(txtTenKh, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(txtSdt, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(72, 72, 72))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMainLayout.createSequentialGroup()
+                .addContainerGap(244, Short.MAX_VALUE)
+                .addComponent(jLabel6)
+                .addGap(18, 18, 18)
+                .addComponent(txtmakh, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(267, 267, 267))
+=======
                 .addGroup(panelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(panelMainLayout.createSequentialGroup()
                         .addComponent(jLabel4)
@@ -180,6 +307,7 @@ public class FormQLKH extends javax.swing.JPanel {
                         .addGap(34, 34, 34)
                         .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(56, 56, 56))
+>>>>>>> 793e3ff4757eb36426a620cc58ad082748016e18
         );
         panelMainLayout.setVerticalGroup(
             panelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -194,6 +322,18 @@ public class FormQLKH extends javax.swing.JPanel {
                     .addGroup(panelMainLayout.createSequentialGroup()
                         .addGap(36, 36, 36)
                         .addGroup(panelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+<<<<<<< HEAD
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtSdt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtTenKh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(panelMainLayout.createSequentialGroup()
+                        .addGap(133, 133, 133)
+                        .addGroup(panelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtmakh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(64, Short.MAX_VALUE))
+=======
                             .addComponent(txtTenKh1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(panelMainLayout.createSequentialGroup()
@@ -202,6 +342,7 @@ public class FormQLKH extends javax.swing.JPanel {
                             .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(67, Short.MAX_VALUE))
+>>>>>>> 793e3ff4757eb36426a620cc58ad082748016e18
         );
 
         tblKH.setModel(new javax.swing.table.DefaultTableModel(
@@ -246,7 +387,11 @@ public class FormQLKH extends javax.swing.JPanel {
                     .addComponent(panelMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(spTable, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+<<<<<<< HEAD
+                .addContainerGap(59, Short.MAX_VALUE))
+=======
                 .addContainerGap(64, Short.MAX_VALUE))
+>>>>>>> 793e3ff4757eb36426a620cc58ad082748016e18
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -263,15 +408,57 @@ public class FormQLKH extends javax.swing.JPanel {
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
+        try {
+            if (check()) {
+                String ma = txtmakh.getText();
+                String ten = txtTenKh.getText();
+                String sdt = txtSdt.getText();
+                QLKhachHang kh = new QLKhachHang(ma, ten, sdt);
+                JOptionPane.showMessageDialog(this, sv.addNew(kh));
+                clear();
+                loadData(sv.getAllKH());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         // TODO add your handling code here:
+        try {
+            if (check()) {
+                String id = sv.getAllKH().get(index).getId();
+                String ma = txtmakh.getText();
+                String ten = txtTenKh.getText();
+                String sdt = txtSdt.getText();
+                QLKhachHang kh = new QLKhachHang(ma, ten, sdt);
+                JOptionPane.showMessageDialog(this, sv.updateKH(id, kh));
+                clear();
+                loadData(sv.getAllKH());
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "chon khach hang muon sua");
+        }
+
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         // TODO add your handling code here:
+        try {
+            String id = sv.getAllKH().get(index).getId();
+            JOptionPane.showMessageDialog(this, sv.deleteKH(id));
+            clear();
+            loadData(sv.getAllKH());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "chon khach hang muon xoa");
+        }
     }//GEN-LAST:event_btnXoaActionPerformed
+
+    private void tbKhachHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbKhachHangMouseClicked
+        // TODO add your handling code here:
+        index = tbKhachHang.getSelectedRow();
+        showIndex();
+    }//GEN-LAST:event_tbKhachHangMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -290,8 +477,13 @@ public class FormQLKH extends javax.swing.JPanel {
     private swing.swing.Table tblKH;
     private swing.controls.TextField txtEmail;
     private swing.controls.TextField txtSdt;
+<<<<<<< HEAD
+    private swing.controls.TextField txtTenKh;
+    private swing.controls.TextField txtmakh;
+=======
     private swing.controls.TextField txtTenKh1;
     private swing.controls.TextField txtma;
+>>>>>>> 793e3ff4757eb36426a620cc58ad082748016e18
     // End of variables declaration//GEN-END:variables
 
     private void loadToTable(ArrayList<KhachHang> kh) {

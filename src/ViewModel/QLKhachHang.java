@@ -16,20 +16,27 @@ public class QLKhachHang {
     private String ma;
     private String ten;
     private String SDT;
-    private String email;
-
     public QLKhachHang() {
     }
 
-    public QLKhachHang(String id, String ma, String ten, String SDT, String email) {
+    public QLKhachHang(String id, String ma, String ten, String SDT) {
         this.id = id;
         this.ma = ma;
         this.ten = ten;
         this.SDT = SDT;
-        this.email = email;
     }
 
+    public QLKhachHang(String ma, String ten, String SDT) {
+        this.ma = ma;
+        this.ten = ten;
+        this.SDT = SDT;
+    }
 
+    public QLKhachHang(String ten, String SDT) {
+        this.ten = ten;
+        this.SDT = SDT;
+    }
+    
     public String getId() {
         return id;
     }
@@ -60,14 +67,6 @@ public class QLKhachHang {
 
     public void setSDT(String SDT) {
         this.SDT = SDT;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
 }

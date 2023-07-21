@@ -46,7 +46,6 @@ public class RPKhachHang {
                 kh.setMa(rs.getString("Ma"));
                 kh.setTen(rs.getString("Ten"));
                 kh.setSDT(rs.getString("SDT"));
-                kh.setEmail(rs.getString("Email"));
                 lstKH.add(kh);
             }
             return lstKH;
@@ -57,14 +56,13 @@ public class RPKhachHang {
     }
 
     public boolean insertKH(KhachHang kh) {
-        String sql = "insert into KhachHang(Ma,Ten,SDT,Email) values(?,?,?,?)";
+        String sql = "insert into KhachHang(Ma,Ten,SDT) values(?,?,?)";
         try {
             Connection con = dbConnection.getConnection();
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setObject(1, kh.getMa());
             ps.setObject(2, kh.getTen());
             ps.setObject(3, kh.getSDT());
-            ps.setObject(4, kh.getEmail());
             return ps.executeUpdate() > 0;
         } catch (Exception e) {
             e.printStackTrace();
@@ -73,13 +71,13 @@ public class RPKhachHang {
     }
 
     public boolean updateKH(String id, KhachHang kh) {
-        String sql = "update KhachHang setTen=?,SDT=?,Email=? where Ma = ?";
+        String sql = "update KhachHang set Ma = ?,Ten=?,SDT=? where id = ?";
         try {
             Connection con = dbConnection.getConnection();
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setObject(1, kh.getTen());
-            ps.setObject(2, kh.getSDT());
-            ps.setObject(3, kh.getEmail());
+            ps.setObject(1, kh.getMa());
+            ps.setObject(2, kh.getTen());
+            ps.setObject(3, kh.getSDT());
             ps.setObject(4, id);
             return ps.executeUpdate() > 0;
         } catch (Exception e) {
@@ -89,7 +87,7 @@ public class RPKhachHang {
     }
 
     public boolean deleteKH(String id) {
-        String sql = "DELETE FROM KhachHang WHERE ma = ?";
+        String sql = "DELETE FROM KhachHang WHERE id = ?";
         try {
             Connection con = dbConnection.getConnection();
             PreparedStatement ps = con.prepareStatement(sql);
