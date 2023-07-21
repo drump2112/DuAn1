@@ -19,6 +19,12 @@
         </file>
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/84972/Documents/NetBeansProjects/DuAn1/src/repository/RPNhanVien.java</file>
+            <file>file:/C:/Users/84972/Documents/NetBeansProjects/DuAn1/src/view/FormQuanLy.java</file>
+            <file>file:/C:/Users/84972/Documents/NetBeansProjects/DuAn1/src/service/InterfaceNV.java</file>
+            <file>file:/C:/Users/84972/Documents/NetBeansProjects/DuAn1/src/view/FormQLNV.java</file>
+            <file>file:/C:/Users/84972/Documents/NetBeansProjects/DuAn1/src/service/NV_impl.java</file>
+        </group>
     </open-files>
 </project-private>

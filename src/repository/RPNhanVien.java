@@ -7,6 +7,7 @@ package repository;
 import dbConnection.DbConnection;
 import domainModel.NhanVien;
 import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 /**
@@ -16,9 +17,10 @@ import java.util.ArrayList;
 public class RPNhanVien {
 
     DbConnection dbConnection;
+    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
     public ArrayList<NhanVien> getListNV() {
-        String sql = "select * from NhanVien";
+        String sql = "select ID,Ma,Ma_CV,Ten,Email,SDT,GioiTinh,Diachi,CMT,CONVERT(nvarchar,NgaySinh,103) from NhanVien";
         ArrayList<NhanVien> lstNV = new ArrayList<>();
         try {
             Connection con = dbConnection.getConnection();
@@ -35,7 +37,8 @@ public class RPNhanVien {
                 nv.setGioiTinh(rs.getString("GioiTinh"));
                 nv.setDiaChi(rs.getString("Diachi"));
                 nv.setCmt(rs.getString("CMT"));
-                nv.setNgaySinh(rs.getDate("NgaySinh"));
+                java.util.Date date = sdf.parse(rs.getString("NgaySinh"));
+                nv.setNgaySinh(new java.util.Date(date.getTime()));
                 lstNV.add(nv);
             }
             return lstNV;
@@ -58,7 +61,7 @@ public class RPNhanVien {
             ps.setObject(6, nv.getGioiTinh());
             ps.setObject(7, nv.getDiaChi());
             ps.setObject(8, nv.getCmt());
-            ps.setObject(9, nv.getNgaySinh());
+            ps.setObject(9, new java.sql.Date(nv.getNgaySinh().getTime()));
             return ps.executeUpdate() > 0;
         } catch (Exception e) {
             e.printStackTrace();
@@ -67,19 +70,20 @@ public class RPNhanVien {
     }
 
     public boolean updateNV(String id, NhanVien nv) {
-        String sql = "update NhanVien Ma_CV=?,Ten=?,SDT=?,Email=?,GioiTinh=?,Diachi=?,CMT=?,NgaySinh=? where Ma = ?";
+        String sql = "update NhanVien set Ma = ?,Ma_CV=?,Ten=?,SDT=?,Email=?,GioiTinh=?,Diachi=?,CMT=?,NgaySinh=? where id = ?";
         try {
             Connection con = dbConnection.getConnection();
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setObject(1, nv.getMaCv());
-            ps.setObject(2, nv.getHoTen());
-            ps.setObject(3, nv.getSdt());
-            ps.setObject(4, nv.getEmail());
-            ps.setObject(5, nv.getGioiTinh());
-            ps.setObject(6, nv.getDiaChi());
-            ps.setObject(7, nv.getCmt());
-            ps.setObject(8, nv.getNgaySinh());
-            ps.setObject(9, id);
+            ps.setObject(1, nv.getMa());
+            ps.setObject(2, nv.getMaCv());
+            ps.setObject(3, nv.getHoTen());
+            ps.setObject(4, nv.getSdt());
+            ps.setObject(5, nv.getEmail());
+            ps.setObject(6, nv.getGioiTinh());
+            ps.setObject(7, nv.getDiaChi());
+            ps.setObject(8, nv.getCmt());
+            ps.setObject(9, new java.sql.Date(nv.getNgaySinh().getTime()));
+            ps.setObject(10, id);
             return ps.executeUpdate() > 0;
         } catch (Exception e) {
             e.printStackTrace();
@@ -88,7 +92,7 @@ public class RPNhanVien {
     }
 
     public boolean deleteNV(String id) {
-        String sql = "DELETE FROM NhanVien WHERE ma = ?";
+        String sql = "DELETE FROM NhanVien WHERE id = ?";
         try {
             Connection con = dbConnection.getConnection();
             PreparedStatement ps = con.prepareStatement(sql);
