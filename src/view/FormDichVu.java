@@ -319,6 +319,10 @@ public class FormDichVu extends javax.swing.JPanel {
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         try {
+            if (service.getListDichVu().size() == 0) {
+                JOptionPane.showMessageDialog(null, "Danh sách đã trống");
+                return;
+            }
             if (click == 1) {
                 if (checkText()) {
                     QLDichVu qldv = service.getListDichVu().get(Index);
@@ -343,6 +347,10 @@ public class FormDichVu extends javax.swing.JPanel {
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         try {
+            if (service.getListDichVu().size() == 0) {
+                JOptionPane.showMessageDialog(null, "Danh sách đã trống");
+                return;
+            }
             if (click == 1) {
                 QLDichVu qldv = service.getListDichVu().get(Index);
                 service.xoaDichVu(qldv);
