@@ -4,6 +4,7 @@
  */
 package view;
 
+<<<<<<< HEAD
 import ViewModel.QLKhachHang;
 import java.awt.Color;
 import java.util.ArrayList;
@@ -14,6 +15,15 @@ import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
 import service.InterfaceKH;
 import service.KH_impl;
+=======
+import domainModel.KhachHang;
+import java.awt.Color;
+import java.util.ArrayList;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.table.DefaultTableModel;
+import service.ServiceKhachHang;
+>>>>>>> 793e3ff4757eb36426a620cc58ad082748016e18
 import swing.swing.ScrollBar;
 
 /**
@@ -21,11 +31,18 @@ import swing.swing.ScrollBar;
  * @author sethk
  */
 public class FormQLKH extends javax.swing.JPanel {
+<<<<<<< HEAD
 
     int index = -1;
     DefaultTableModel model = new DefaultTableModel();
     InterfaceKH sv = new KH_impl();
 
+=======
+    
+    DefaultTableModel model = new DefaultTableModel();
+    ServiceKhachHang service = new ServiceKhachHang();
+    int index;
+>>>>>>> 793e3ff4757eb36426a620cc58ad082748016e18
     /**
      * Creates new form FormQLKH
      */
@@ -41,6 +58,7 @@ public class FormQLKH extends javax.swing.JPanel {
         JPanel p = new JPanel();
         p.setBackground(Color.WHITE);
         spTable.setCorner(JScrollPane.UPPER_RIGHT_CORNER, p);
+<<<<<<< HEAD
 
         loadData(sv.getAllKH());
     }
@@ -92,6 +110,9 @@ public class FormQLKH extends javax.swing.JPanel {
         }
 
         return true;
+=======
+        loadToTable(service.getAllKH());
+>>>>>>> 793e3ff4757eb36426a620cc58ad082748016e18
     }
 
     /**
@@ -105,8 +126,6 @@ public class FormQLKH extends javax.swing.JPanel {
 
         panelSeth4 = new swing.component.PanelSeth();
         jLabel2 = new javax.swing.JLabel();
-        spTable = new javax.swing.JScrollPane();
-        tbKhachHang = new swing.swing.Table();
         panelButton = new swing.swing.PanelBorder();
         btnThem = new swing.controls.Button();
         btnSua = new swing.controls.Button();
@@ -114,10 +133,19 @@ public class FormQLKH extends javax.swing.JPanel {
         panelMain = new swing.swing.PanelBorder();
         txtSdt = new swing.controls.TextField();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+<<<<<<< HEAD
         txtmakh = new swing.controls.TextField();
         txtTenKh = new swing.controls.TextField();
+=======
+        txtma = new swing.controls.TextField();
+        jLabel4 = new javax.swing.JLabel();
+        txtTenKh1 = new swing.controls.TextField();
+        jLabel7 = new javax.swing.JLabel();
+        txtEmail = new swing.controls.TextField();
+        spTable = new javax.swing.JScrollPane();
+        tblKH = new swing.swing.Table();
+>>>>>>> 793e3ff4757eb36426a620cc58ad082748016e18
 
         setPreferredSize(new java.awt.Dimension(1079, 586));
 
@@ -129,6 +157,7 @@ public class FormQLKH extends javax.swing.JPanel {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/customerpng.png"))); // NOI18N
         jLabel2.setText(" Quản Lý Khách Hàng");
 
+<<<<<<< HEAD
         tbKhachHang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -144,6 +173,8 @@ public class FormQLKH extends javax.swing.JPanel {
         });
         spTable.setViewportView(tbKhachHang);
 
+=======
+>>>>>>> 793e3ff4757eb36426a620cc58ad082748016e18
         btnThem.setForeground(new java.awt.Color(102, 102, 102));
         btnThem.setText("Thêm");
         btnThem.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
@@ -203,24 +234,44 @@ public class FormQLKH extends javax.swing.JPanel {
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("SĐT");
 
+<<<<<<< HEAD
         jLabel6.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Mã KH");
 
+=======
+>>>>>>> 793e3ff4757eb36426a620cc58ad082748016e18
         jLabel3.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Họ & Tên");
+        jLabel3.setText("Mã KH");
 
+<<<<<<< HEAD
         txtmakh.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
 
         txtTenKh.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+=======
+        txtma.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+
+        jLabel4.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Họ & Tên");
+
+        txtTenKh1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+
+        jLabel7.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Email");
+
+        txtEmail.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+>>>>>>> 793e3ff4757eb36426a620cc58ad082748016e18
 
         javax.swing.GroupLayout panelMainLayout = new javax.swing.GroupLayout(panelMain);
         panelMain.setLayout(panelMainLayout);
         panelMainLayout.setHorizontalGroup(
             panelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMainLayout.createSequentialGroup()
+            .addGroup(panelMainLayout.createSequentialGroup()
                 .addGap(49, 49, 49)
+<<<<<<< HEAD
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
                 .addComponent(txtTenKh, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -235,14 +286,43 @@ public class FormQLKH extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(txtmakh, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(267, 267, 267))
+=======
+                .addGroup(panelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(panelMainLayout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(31, 31, 31)
+                        .addComponent(txtTenKh1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelMainLayout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(31, 31, 31)
+                        .addComponent(txtma, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
+                .addGroup(panelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMainLayout.createSequentialGroup()
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(34, 34, 34)
+                        .addComponent(txtSdt, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMainLayout.createSequentialGroup()
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(34, 34, 34)
+                        .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(56, 56, 56))
+>>>>>>> 793e3ff4757eb36426a620cc58ad082748016e18
         );
         panelMainLayout.setVerticalGroup(
             panelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelMainLayout.createSequentialGroup()
+                .addGap(42, 42, 42)
+                .addGroup(panelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtSdt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(panelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelMainLayout.createSequentialGroup()
-                        .addGap(42, 42, 42)
+                        .addGap(36, 36, 36)
                         .addGroup(panelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+<<<<<<< HEAD
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtSdt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -253,7 +333,30 @@ public class FormQLKH extends javax.swing.JPanel {
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtmakh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(64, Short.MAX_VALUE))
+=======
+                            .addComponent(txtTenKh1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(panelMainLayout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addGroup(panelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(67, Short.MAX_VALUE))
+>>>>>>> 793e3ff4757eb36426a620cc58ad082748016e18
         );
+
+        tblKH.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        spTable.setViewportView(tblKH);
 
         javax.swing.GroupLayout panelSeth4Layout = new javax.swing.GroupLayout(panelSeth4);
         panelSeth4.setLayout(panelSeth4Layout);
@@ -263,17 +366,15 @@ public class FormQLKH extends javax.swing.JPanel {
                 .addGap(0, 63, Short.MAX_VALUE)
                 .addGroup(panelSeth4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelSeth4Layout.createSequentialGroup()
-                        .addComponent(panelMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(103, 103, 103)
-                        .addComponent(panelButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(41, 41, 41))
-                    .addGroup(panelSeth4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelSeth4Layout.createSequentialGroup()
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(352, 352, 352))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelSeth4Layout.createSequentialGroup()
-                            .addComponent(spTable, javax.swing.GroupLayout.PREFERRED_SIZE, 995, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(21, 21, 21)))))
+                        .addGap(311, 311, 311)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelSeth4Layout.createSequentialGroup()
+                        .addGroup(panelSeth4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(panelMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(spTable, javax.swing.GroupLayout.PREFERRED_SIZE, 781, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(93, 93, 93)
+                        .addComponent(panelButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(42, 42, 42))
         );
         panelSeth4Layout.setVerticalGroup(
             panelSeth4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -284,9 +385,13 @@ public class FormQLKH extends javax.swing.JPanel {
                 .addGroup(panelSeth4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(panelButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(panelMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(spTable, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+<<<<<<< HEAD
                 .addContainerGap(59, Short.MAX_VALUE))
+=======
+                .addContainerGap(64, Short.MAX_VALUE))
+>>>>>>> 793e3ff4757eb36426a620cc58ad082748016e18
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -362,15 +467,30 @@ public class FormQLKH extends javax.swing.JPanel {
     private swing.controls.Button btnXoa;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private swing.swing.PanelBorder panelButton;
     private swing.swing.PanelBorder panelMain;
     private swing.component.PanelSeth panelSeth4;
     private javax.swing.JScrollPane spTable;
-    private swing.swing.Table tbKhachHang;
+    private swing.swing.Table tblKH;
+    private swing.controls.TextField txtEmail;
     private swing.controls.TextField txtSdt;
+<<<<<<< HEAD
     private swing.controls.TextField txtTenKh;
     private swing.controls.TextField txtmakh;
+=======
+    private swing.controls.TextField txtTenKh1;
+    private swing.controls.TextField txtma;
+>>>>>>> 793e3ff4757eb36426a620cc58ad082748016e18
     // End of variables declaration//GEN-END:variables
+
+    private void loadToTable(ArrayList<KhachHang> kh) {
+        model = (DefaultTableModel) tblKH.getModel();
+        model.setColumnCount(0);
+        for (KhachHang khachHang : kh) {
+            model.addRow(new Object[]{khachHang.getMa(),khachHang.getTen(),khachHang.getSDT()});
+        }
+    }
 }

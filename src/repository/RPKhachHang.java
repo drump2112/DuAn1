@@ -18,7 +18,7 @@ public class RPKhachHang {
     DbConnection dbConnection;
 
     public boolean addKhachHang(KhachHang kh) {
-        String sql = "INSERT INTO dbo.KhachHang(Ma,Ten,SDT)VALUES(?,?,?)";
+        String sql = "INSERT INTO dbo.KhachHang(Ma,Ten,SDT)VALUES(?,?,?,?)";
 
         try ( Connection con = DbConnection.getConnection();  PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setObject(1, kh.getMa());

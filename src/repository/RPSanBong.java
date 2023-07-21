@@ -23,6 +23,7 @@ public class RPSanBong {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {                
                 SanBong sb = new SanBong();
+                sb.setId(rs.getString("id"));
                 sb.setMa(rs.getString("ma"));
                 sb.setTenSan(rs.getString("ten"));
                 sb.setGia(rs.getDouble("gia"));
@@ -39,13 +40,45 @@ public class RPSanBong {
     }
     
     public boolean addSB(SanBong sb){
-        String sql = "insert into SanBong(ten,loaisan,gia,gia2) values(?,?,?,?)";
+        String sql = "insert into SanBong(ma,ten,loaisan,gia,gia2) values(?,?,?,?,?)";
         try (Connection con = dbConnection.getConnection();
                 PreparedStatement ps= con.prepareStatement(sql)){
-            ps.setObject(1, sb.getTenSan());
-            ps.setObject(2, sb.getLoaiSan());
-            ps.setObject(3, sb.getGia());
-            ps.setObject(4, sb.getGia2());
+            ps.setObject(1, sb.getMa());
+            ps.setObject(2, sb.getTenSan());
+            ps.setObject(3, sb.getLoaiSan());
+            ps.setObject(4, sb.getGia());
+            ps.setObject(5, sb.getGia2());
+            int rs = ps.executeUpdate();
+            return rs >0;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+    
+     public boolean updateSB(SanBong sb, String id){ 
+        String sql = "update sanbong set ma=?, ten =?, loaisan=?, gia=?, gia2=? where id=?";
+        try (Connection con = dbConnection.getConnection();
+                PreparedStatement ps= con.prepareStatement(sql)){
+            ps.setObject(1, sb.getMa());
+            ps.setObject(2, sb.getTenSan());
+            ps.setObject(3, sb.getLoaiSan());
+            ps.setObject(4, sb.getGia());
+            ps.setObject(5, sb.getGia2());
+            ps.setObject(6, id);
+            int rs = ps.executeUpdate();
+            return rs>0;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+    
+    public boolean deleteSB(String id){
+        String sql = "delete sanbong where id =?";
+        try(Connection con = dbConnection.getConnection();
+                PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setObject(1, id);
             int rs = ps.executeUpdate();
             return rs >0;
         } catch (Exception e) {

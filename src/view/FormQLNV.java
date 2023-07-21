@@ -5,6 +5,7 @@
 package view;
 
 import ViewModel.QLChucVu;
+<<<<<<< HEAD
 import ViewModel.QLNhanVien;
 import java.awt.Color;
 import java.text.SimpleDateFormat;
@@ -22,6 +23,18 @@ import service.InterfaceChucVu;
 import service.InterfaceNV;
 import service.NV_impl;
 import service.ServiceChucVu;
+=======
+import domainModel.ChucVu;
+import domainModel.NhanVien;
+import java.awt.Color;
+import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.table.DefaultTableModel;
+import service.ServiceChucVu;
+import service.ServiceNhanVien;
+>>>>>>> 793e3ff4757eb36426a620cc58ad082748016e18
 import swing.swing.ScrollBar;
 
 /**
@@ -29,6 +42,7 @@ import swing.swing.ScrollBar;
  * @author sethk
  */
 public class FormQLNV extends javax.swing.JPanel {
+<<<<<<< HEAD
 
     int index = -1;
     DefaultTableModel model = new DefaultTableModel();
@@ -36,6 +50,12 @@ public class FormQLNV extends javax.swing.JPanel {
     InterfaceNV sv = new NV_impl();
     InterfaceChucVu sv_CV = new ServiceChucVu();
 
+=======
+    
+    DefaultTableModel model = new DefaultTableModel();
+    ServiceNhanVien service = new ServiceNhanVien();
+    int index;
+>>>>>>> 793e3ff4757eb36426a620cc58ad082748016e18
     /**
      * Creates new form FormQLNV
      */
@@ -52,6 +72,7 @@ public class FormQLNV extends javax.swing.JPanel {
         JPanel p = new JPanel();
         p.setBackground(Color.WHITE);
         spTable.setCorner(JScrollPane.UPPER_RIGHT_CORNER, p);
+<<<<<<< HEAD
 
         loadData(sv.getAllNV());
         loadCBO_CV(sv_CV.getList());
@@ -166,7 +187,13 @@ public class FormQLNV extends javax.swing.JPanel {
         }
 
         return true;
+=======
+        loadToTable(service.getAllNV());
+     
+       
+>>>>>>> 793e3ff4757eb36426a620cc58ad082748016e18
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -181,6 +208,11 @@ public class FormQLNV extends javax.swing.JPanel {
         panelBorder1 = new swing.swing.PanelBorder();
         panelSeth4 = new swing.component.PanelSeth();
         jLabel2 = new javax.swing.JLabel();
+<<<<<<< HEAD
+=======
+        spTable = new javax.swing.JScrollPane();
+        tblNV = new swing.swing.Table();
+>>>>>>> 793e3ff4757eb36426a620cc58ad082748016e18
         jLabel1 = new javax.swing.JLabel();
         txtma = new swing.controls.TextField();
         jLabel3 = new javax.swing.JLabel();
@@ -216,6 +248,21 @@ public class FormQLNV extends javax.swing.JPanel {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/staff.png"))); // NOI18N
         jLabel2.setText("  Quản Lý Nhân Viên");
 
+<<<<<<< HEAD
+=======
+        spTable.setBorder(null);
+
+        tblNV.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Mã NV", "Họ Tên", "Giới Tính", "MA.CV", "Email", "CCCD", "SĐT", "Địa Chỉ", "Ngày Sinh"
+            }
+        ));
+        spTable.setViewportView(tblNV);
+
+>>>>>>> 793e3ff4757eb36426a620cc58ad082748016e18
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Mã NV");
@@ -242,7 +289,11 @@ public class FormQLNV extends javax.swing.JPanel {
 
         jLabel6.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+<<<<<<< HEAD
         jLabel6.setText("Mã_CV");
+=======
+        jLabel6.setText("MACV");
+>>>>>>> 793e3ff4757eb36426a620cc58ad082748016e18
 
         jLabel7.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
@@ -591,6 +642,15 @@ public class FormQLNV extends javax.swing.JPanel {
     private swing.RadioButtonCustom rdonu;
     private javax.swing.JScrollPane spTable;
     private swing.swing.Table tblNV;
+<<<<<<< HEAD
+=======
+    private swing.controls.TextField textField1;
+    private swing.controls.TextField textField2;
+    private swing.controls.TextField textField3;
+    private swing.controls.TextField textField4;
+    private swing.controls.TextField textField5;
+    private swing.controls.TextField textField7;
+>>>>>>> 793e3ff4757eb36426a620cc58ad082748016e18
     private swing.controls.TextField txtCCCD;
     private swing.controls.TextField txtdc;
     private swing.controls.TextField txtemail;
@@ -599,4 +659,12 @@ public class FormQLNV extends javax.swing.JPanel {
     private swing.controls.TextField txtsdt;
     private swing.controls.TextField txtten;
     // End of variables declaration//GEN-END:variables
+
+    private void loadToTable(ArrayList<NhanVien> nv) {
+        model = (DefaultTableModel) tblNV.getModel();
+        model.setRowCount(0);
+        for (NhanVien nhanVien : nv) {
+            model.addRow(new Object[]{nhanVien.getMa(),nhanVien.getHoTen(),nhanVien.getGioiTinh(),nhanVien.getMaCv(),nhanVien.getEmail(),nhanVien.getCmt(),nhanVien.getSdt(),nhanVien.getDiaChi(),nhanVien.getNgaySinh()});
+        }
+    }
 }

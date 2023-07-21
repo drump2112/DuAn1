@@ -4,7 +4,7 @@
  */
 package view;
 
-import domainModel.SanBong;
+import ViewModel.QLSanBong;
 import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -19,10 +19,11 @@ import swing.swing.ScrollBar;
  * @author sethk
  */
 public class FormQLS extends javax.swing.JPanel {
+
     DefaultTableModel model = new DefaultTableModel();
     ServiceSanBong service = new ServiceSanBong();
     int index;
-    
+
     public FormQLS() {
         initComponents();
         panelButton.setBackground(new Color(0, 0, 0, 0));
@@ -32,7 +33,7 @@ public class FormQLS extends javax.swing.JPanel {
         JPanel p = new JPanel();
         p.setBackground(Color.WHITE);
         spTable.setCorner(JScrollPane.UPPER_RIGHT_CORNER, p);
-        
+
         loadToTable(service.getList());
     }
 
@@ -50,17 +51,19 @@ public class FormQLS extends javax.swing.JPanel {
         spTable = new javax.swing.JScrollPane();
         tblBang = new swing.swing.Table();
         jLabel1 = new javax.swing.JLabel();
-        txtTenSan = new swing.controls.TextField();
+        txtMaSan = new swing.controls.TextField();
         jLabel3 = new javax.swing.JLabel();
         txtGia1 = new swing.controls.TextField();
         jLabel4 = new javax.swing.JLabel();
         txtLoaiSan = new swing.controls.TextField();
         jLabel8 = new javax.swing.JLabel();
         panelButton = new swing.swing.PanelBorder();
-        button3 = new swing.controls.Button();
-        button4 = new swing.controls.Button();
-        button5 = new swing.controls.Button();
+        btnAdd = new swing.controls.Button();
+        btnUpdate = new swing.controls.Button();
+        btnDelete = new swing.controls.Button();
         txtGia2 = new swing.controls.TextField();
+        txtTenSan = new swing.controls.TextField();
+        jLabel5 = new javax.swing.JLabel();
 
         panelSeth4.setColor1(new java.awt.Color(28, 181, 224));
         panelSeth4.setColor2(new java.awt.Color(0, 0, 70));
@@ -77,16 +80,21 @@ public class FormQLS extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Tên Sân", "Loại", "Giá 1 ", "Giá 2"
+                "Mã Sân", "Tên Sân", "Loại", "Giá 1 ", "Giá 2"
             }
         ));
+        tblBang.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblBangMouseClicked(evt);
+            }
+        });
         spTable.setViewportView(tblBang);
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Tên Sân");
+        jLabel1.setText("Mã Sân");
 
-        txtTenSan.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        txtMaSan.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -104,30 +112,30 @@ public class FormQLS extends javax.swing.JPanel {
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Giá 2");
 
-        button3.setForeground(new java.awt.Color(102, 102, 102));
-        button3.setText("Thêm");
-        button3.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        button3.addActionListener(new java.awt.event.ActionListener() {
+        btnAdd.setForeground(new java.awt.Color(102, 102, 102));
+        btnAdd.setText("Thêm");
+        btnAdd.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button3ActionPerformed(evt);
+                btnAddActionPerformed(evt);
             }
         });
 
-        button4.setForeground(new java.awt.Color(102, 102, 102));
-        button4.setText("Sửa");
-        button4.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        button4.addActionListener(new java.awt.event.ActionListener() {
+        btnUpdate.setForeground(new java.awt.Color(102, 102, 102));
+        btnUpdate.setText("Sửa");
+        btnUpdate.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button4ActionPerformed(evt);
+                btnUpdateActionPerformed(evt);
             }
         });
 
-        button5.setForeground(new java.awt.Color(102, 102, 102));
-        button5.setText("Xóa");
-        button5.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        button5.addActionListener(new java.awt.event.ActionListener() {
+        btnDelete.setForeground(new java.awt.Color(102, 102, 102));
+        btnDelete.setText("Xóa");
+        btnDelete.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button5ActionPerformed(evt);
+                btnDeleteActionPerformed(evt);
             }
         });
 
@@ -138,24 +146,30 @@ public class FormQLS extends javax.swing.JPanel {
             .addGroup(panelButtonLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addGroup(panelButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(button5, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(button4, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(button3, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
         panelButtonLayout.setVerticalGroup(
             panelButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelButtonLayout.createSequentialGroup()
                 .addGap(39, 39, 39)
-                .addComponent(button3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
-                .addComponent(button4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
-                .addComponent(button5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(63, Short.MAX_VALUE))
         );
 
         txtGia2.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+
+        txtTenSan.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+
+        jLabel5.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Tên Sân");
 
         javax.swing.GroupLayout panelSeth4Layout = new javax.swing.GroupLayout(panelSeth4);
         panelSeth4.setLayout(panelSeth4Layout);
@@ -170,13 +184,23 @@ public class FormQLS extends javax.swing.JPanel {
                     .addGroup(panelSeth4Layout.createSequentialGroup()
                         .addGroup(panelSeth4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panelSeth4Layout.createSequentialGroup()
-                                .addGroup(panelSeth4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel1))
-                                .addGap(31, 31, 31)
-                                .addGroup(panelSeth4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtLoaiSan, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtTenSan, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(314, 314, 314)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(panelSeth4Layout.createSequentialGroup()
+                                .addGroup(panelSeth4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(panelSeth4Layout.createSequentialGroup()
+                                        .addComponent(jLabel5)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(txtTenSan, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(panelSeth4Layout.createSequentialGroup()
+                                        .addGroup(panelSeth4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel3)
+                                            .addComponent(jLabel1))
+                                        .addGap(31, 31, 31)
+                                        .addGroup(panelSeth4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtLoaiSan, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtMaSan, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                 .addGap(130, 130, 130)
                                 .addGroup(panelSeth4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -185,11 +209,7 @@ public class FormQLS extends javax.swing.JPanel {
                                 .addGroup(panelSeth4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtGia1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtGia2, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(144, 144, 144))
-                            .addGroup(panelSeth4Layout.createSequentialGroup()
-                                .addGap(314, 314, 314)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addGap(144, 144, 144)))
                         .addComponent(panelButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(62, 62, 62))))
         );
@@ -201,7 +221,7 @@ public class FormQLS extends javax.swing.JPanel {
                         .addGap(87, 87, 87)
                         .addGroup(panelSeth4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtTenSan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtMaSan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtGia1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(21, 21, 21)
@@ -209,7 +229,11 @@ public class FormQLS extends javax.swing.JPanel {
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtLoaiSan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtGia2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtGia2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(24, 24, 24)
+                        .addGroup(panelSeth4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtTenSan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(panelSeth4Layout.createSequentialGroup()
                         .addGap(23, 23, 23)
                         .addComponent(panelButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -232,34 +256,101 @@ public class FormQLS extends javax.swing.JPanel {
             .addComponent(panelSeth4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+    public boolean check() {
+        if (txtMaSan.getText().trim().isEmpty() || txtTenSan.getText().trim().isEmpty() || txtLoaiSan.getText().trim().isEmpty() || txtGia1.getText().trim().isEmpty() || txtGia2.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Không được để trống thông tin");
+            return true;
+        }
+        Double gia;
+        try {
+            gia = Double.parseDouble(txtGia1.getText());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Giá phải là số");
+            return true;
+        }
+        Double gia2;
+        try {
+            gia2 = Double.parseDouble(txtGia2.getText());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Giá phải là số");
+            return true;
+        }
+        int loaiSan;
+        try {
+            loaiSan = Integer.parseInt(txtLoaiSan.getText());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Loại sân phải là số");
+            return true;
+        }
+        if (txtMaSan.getText().length() > 3 || txtMaSan.getText().length() < 3) {
+            JOptionPane.showMessageDialog(this, "Mã phải = 3 ký tự");
+            return true;
+        }
+       
+        return false;
+    }
+    public boolean checkMa(){
+         ArrayList<QLSanBong> lstSB = service.getList();
+        for (QLSanBong qLSanBong : lstSB) {
+            if (txtMaSan.getText().equalsIgnoreCase(qLSanBong.getMa())) {
+                JOptionPane.showMessageDialog(this, "Mã không được trùng");
+                return true;
+            }
+        }
+        return false;
+    }
 
-    private void button3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button3ActionPerformed
-        String tenSan = txtTenSan.getText();
-        int loaiSan = Integer.parseInt(txtLoaiSan.getText());
-        Double gia1 = Double.parseDouble(txtGia1.getText());
-        Double gia2 = Double.parseDouble(txtGia2.getText());
-        SanBong sb = new SanBong(tenSan, gia1, gia2, loaiSan);
-        JOptionPane.showMessageDialog(this, service.addSB(sb));
-        loadToTable(service.getList());
-    }//GEN-LAST:event_button3ActionPerformed
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+        if (!check()&&!checkMa()) {
+            String tenSan = txtTenSan.getText();
+            String maSan = txtMaSan.getText();
+            int loaiSan = Integer.parseInt(txtLoaiSan.getText());
+            Double gia1 = Double.parseDouble(txtGia1.getText());
+            Double gia2 = Double.parseDouble(txtGia2.getText());
+            QLSanBong sb = new QLSanBong(maSan, tenSan, gia1, gia2, loaiSan);
+            JOptionPane.showMessageDialog(this, service.addSB(sb));
+            loadToTable(service.getList());
+        }
+    }//GEN-LAST:event_btnAddActionPerformed
 
-    private void button4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_button4ActionPerformed
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        if (!check()) {
+            String id = service.getList().get(index).getId();
+            String maSan = txtMaSan.getText();
+            String tenSan = txtTenSan.getText();
+            int loaiSan = Integer.parseInt(txtLoaiSan.getText());
+            Double gia1 = Double.parseDouble(txtGia1.getText());
+            Double gia2 = Double.parseDouble(txtGia2.getText());
+            QLSanBong sb = new QLSanBong(maSan, tenSan, gia1, gia2, loaiSan);
+            JOptionPane.showMessageDialog(this, service.updateSB(sb, id));
+            loadToTable(service.getList());
+        }
+    }//GEN-LAST:event_btnUpdateActionPerformed
 
-    private void button5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_button5ActionPerformed
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        int choice = JOptionPane.showConfirmDialog(this, "Chắc chắn xóa?");
+        if (choice == JOptionPane.YES_OPTION) {
+            String id = service.getList().get(index).getId();
+            JOptionPane.showMessageDialog(this, service.deleteSB(id));
+            loadToTable(service.getList());
+        }
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void tblBangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblBangMouseClicked
+        index = tblBang.getSelectedRow();
+        showIndex();
+    }//GEN-LAST:event_tblBangMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private swing.controls.Button button3;
-    private swing.controls.Button button4;
-    private swing.controls.Button button5;
+    private swing.controls.Button btnAdd;
+    private swing.controls.Button btnDelete;
+    private swing.controls.Button btnUpdate;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel8;
     private swing.swing.PanelBorder panelButton;
     private swing.component.PanelSeth panelSeth4;
@@ -268,14 +359,26 @@ public class FormQLS extends javax.swing.JPanel {
     private swing.controls.TextField txtGia1;
     private swing.controls.TextField txtGia2;
     private swing.controls.TextField txtLoaiSan;
+    private swing.controls.TextField txtMaSan;
     private swing.controls.TextField txtTenSan;
     // End of variables declaration//GEN-END:variables
 
-    private void loadToTable(ArrayList<SanBong> sb) {
+    private void loadToTable(ArrayList<QLSanBong> sb) {
         model = (DefaultTableModel) tblBang.getModel();
         model.setRowCount(0);
-        for (SanBong sanBong : sb) {
-            model.addRow(new Object[]{sanBong.getTenSan(),sanBong.getLoaiSan(),sanBong.getGia(),sanBong.getGia2()});
+        for (QLSanBong sanBong : sb) {
+            model.addRow(new Object[]{sanBong.getMa(), sanBong.getTenSan(), sanBong.getLoaiSan(), sanBong.getGia(), sanBong.getGia2()});
         }
+    }
+
+    private void showIndex() {
+        QLSanBong sb = service.getList().get(index);
+        txtMaSan.setText(sb.getMa());
+        String id = sb.getId();
+        txtTenSan.setText(sb.getTenSan());
+        txtLoaiSan.setText(sb.getLoaiSan() + "");
+        txtGia1.setText(sb.getGia() + "");
+        txtGia2.setText(sb.getGia2() + "");
+        tblBang.setRowSelectionInterval(index, index);
     }
 }
